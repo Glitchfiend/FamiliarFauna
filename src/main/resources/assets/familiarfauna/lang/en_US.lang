@@ -1,0 +1,12 @@
+itemGroup.tabFamiliarFauna=Familiar Fauna
+
+config.category.mobSettings.title=Spawn Settings
+config.category.mobSettings.tooltip=Toggle spawns for mobs
+
+entity.deer.name=Deer
+entity.butterfly.name=Butterfly
+entity.snail.name=Snail
+
+item.bug_net.name=Bug Net
+item.venison_raw.name=Raw Venison
+item.venison_cooked.name=Cooked Venison

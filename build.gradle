@@ -1,0 +1,32 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'maven'
+
+ext.configFile = file "build.properties"
+
+configFile.withReader {
+    def prop = new Properties()
+    prop.load(it)
+    project.ext.config = new ConfigSlurper().parse prop
+}
+
+group = "glitchfiend.familiarfauna"
+version = config.mod_version
+archivesBaseName = "FamiliarFauna"
+
+minecraft {
+    version = config.minecraft_version + "-" + config.forge_version
+	mappings = project.config.mappings_version
+}
