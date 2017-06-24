@@ -22,11 +22,44 @@ configFile.withReader {
     project.ext.config = new ConfigSlurper().parse prop
 }
 
-group = "glitchfiend.familiarfauna"
+group = "com.github.glitchfiend.familiarfauna"
 version = config.mod_version
 archivesBaseName = "FamiliarFauna"
 
+// add some stuff to the version
+version = "${config.minecraft_version}-${config.mod_version}.${System.getenv().BUILD_NUMBER}"
+// set this for the version.properties file, or was this broken on purpose?
+config.build_number = (System.getenv().BUILD_NUMBER) ? System.getenv().BUILD_NUMBER : ""
+
 minecraft {
-    version = config.minecraft_version + "-" + config.forge_version
-	mappings = project.config.mappings_version
+    version = config.minecraft_version + "-" + config.forge_version // grab latest forge
+    useDepAts = true
+    mappings = project.config.mappings_version
+    //gradle complains if this isn't set when setting up/using IDEA workspace
+    runDir = "run"
+    //set a full version string with appended build number to be used in mod registration
+    def buildnum = (config.build_number!="") ? '.' + config.build_number : ""
+    replace '@MOD_VERSION@', config.mod_version + buildnum
+    replace '1.0.0.0', config.forge_version
+    replaceIn 'FamiliarFauna.java'
+}
+
+processResources {
+    from(sourceSets.main.resources.srcDirs) {
+        include '**/*.info'
+        include '**/*.properties'
+
+        // replaces
+        expand ([
+            'modid': project.archivesBaseName,
+            'mod_version': project.config.mod_version,
+            'minecraft_version': project.config.minecraft_version,
+            'build_number': project.config.build_number
+        ])
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude '**/*.info'
+        exclude '**/*.properties'
+    }
 }

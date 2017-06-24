@@ -2,8 +2,8 @@
     "modid": "familiarfauna",
     "name": "Familiar Fauna",
     "description": "Adds new, realistic mobs to enhance Minecraft!",
-    "version": "1.0.0",
-    "mcversion": "1.12",
+    "version": "${mod_version}",
+    "mcversion": "${minecraft_version}",
 	"url": "https://minecraft.curseforge.com/projects/familiar-fauna",
     "authorList": ["Forstride"],
     "logoFile": "assets/familiarfauna/textures/gui/logo.png"

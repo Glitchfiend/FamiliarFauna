@@ -16,12 +16,12 @@ import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = FamiliarFauna.MOD_ID, version = FamiliarFauna.MOD_VERSION, name = FamiliarFauna.MOD_NAME, dependencies = "required-after:forge@[14.21.0.2340,)", guiFactory = FamiliarFauna.GUI_FACTORY)
+@Mod(modid = FamiliarFauna.MOD_ID, version = FamiliarFauna.MOD_VERSION, name = FamiliarFauna.MOD_NAME, dependencies = "required-after:forge@[1.0.0.0,)", guiFactory = FamiliarFauna.GUI_FACTORY)
 public class FamiliarFauna
 {
     public static final String MOD_NAME = "FamiliarFauna";
     public static final String MOD_ID = "familiarfauna";
-    public static final String MOD_VERSION = "1.0.0";
+    public static final String MOD_VERSION = "@MOD_VERSION@";
     public static final String GUI_FACTORY = "familiarfauna.client.gui.GuiFFFactory";
     
     @Instance(MOD_ID)

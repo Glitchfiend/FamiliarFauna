@@ -1,5 +1,10 @@
 package familiarfauna.init;
 
+import static familiarfauna.api.FFItems.bug_net;
+import static familiarfauna.api.FFItems.ff_icon;
+import static familiarfauna.api.FFItems.venison_cooked;
+import static familiarfauna.api.FFItems.venison_raw;
+
 import familiarfauna.core.FamiliarFauna;
 import familiarfauna.util.inventory.CreativeTabFF;
 import net.minecraft.client.renderer.block.model.ModelBakery;
@@ -12,10 +17,8 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
-
-import static familiarfauna.api.FFItems.*;
 
 public class ModItems
 {
@@ -50,7 +53,9 @@ public class ModItems
         {
             item.setCreativeTab(CreativeTabFF.instance);
         }
-        GameRegistry.register(item, new ResourceLocation(FamiliarFauna.MOD_ID, name));
+        
+        item.setRegistryName(new ResourceLocation(FamiliarFauna.MOD_ID, name));
+        ForgeRegistries.ITEMS.register(item);
         //FFCommand.itemCount++;
         
         // register sub types if there are any
