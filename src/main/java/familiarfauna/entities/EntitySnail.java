@@ -9,8 +9,8 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class EntitySnail extends EntityCreature implements IMob {
-    
+public class EntitySnail extends EntityCreature implements IMob
+{
     public EntitySnail(World worldIn)
     {
         super(worldIn);

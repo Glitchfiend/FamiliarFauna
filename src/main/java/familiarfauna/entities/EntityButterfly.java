@@ -22,8 +22,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
-public class EntityButterfly extends EntityFlying implements IMob {
-
+public class EntityButterfly extends EntityFlying implements IMob
+{
     private static final DataParameter<Byte> TYPE = EntityDataManager.<Byte>createKey(EntityButterfly.class, DataSerializers.BYTE);
 
     public EntityButterfly(World worldIn) {

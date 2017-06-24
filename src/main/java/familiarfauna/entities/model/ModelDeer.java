@@ -2,6 +2,7 @@ package familiarfauna.entities.model;
 
 import net.minecraft.client.model.ModelQuadruped;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
@@ -96,12 +97,35 @@ public class ModelDeer extends ModelQuadruped
     @Override
     public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale)
     {
-        super.render(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
-        
         this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
 
-        this.neck.render(scale);
-        this.tail.render(scale);
+        if (this.isChild)
+        {
+            float f = 2.0F;
+            GlStateManager.pushMatrix();
+            GlStateManager.scale(0.5F, 0.5F, 0.5F);
+            GlStateManager.translate(0.0F, 24.0F * scale, 0.0F);
+            this.head.render(scale);
+            this.body.render(scale);
+            this.leg1.render(scale);
+            this.leg2.render(scale);
+            this.leg3.render(scale);
+            this.leg4.render(scale);
+            this.neck.render(scale);
+            this.tail.render(scale);
+            GlStateManager.popMatrix();
+        }
+        else
+        {
+            this.head.render(scale);
+            this.body.render(scale);
+            this.leg1.render(scale);
+            this.leg2.render(scale);
+            this.leg3.render(scale);
+            this.leg4.render(scale);
+            this.neck.render(scale);
+            this.tail.render(scale);
+        }
     }
     
     private void setRotation(ModelRenderer model, float x, float y, float z)

@@ -21,6 +21,7 @@ public class RenderButterfly extends RenderLiving<EntityButterfly>
         this.shadowSize = 0.0F;
     }
 
+    @Override
     protected ResourceLocation getEntityTexture(EntityButterfly entity)
     {
         switch (entity.getButterflyType())
