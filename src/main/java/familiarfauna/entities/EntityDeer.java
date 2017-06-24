@@ -145,7 +145,7 @@ public class EntityDeer extends EntityAnimal implements IMob
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
     {
         livingdata = super.onInitialSpawn(difficulty, livingdata);
-        int i = this.rand.nextInt(2);
+        int i = this.rand.nextInt(1);
         int ii = this.rand.nextInt(5);
         boolean flag = false;
 

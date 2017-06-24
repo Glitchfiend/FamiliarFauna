@@ -10,6 +10,7 @@ import familiarfauna.entities.EntityDeer;
 import familiarfauna.entities.EntitySnail;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList.EntityEggInfo;
+import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
@@ -30,8 +31,18 @@ public class ModEntities
     
     public static void init()
     {
+        //Remove cows from the biomes deer spawn in
+        EntityRegistry.removeSpawn(EntityCow.class, EnumCreatureType.CREATURE,
+                Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.MUTATED_BIRCH_FOREST,
+                Biomes.MUTATED_BIRCH_FOREST_HILLS, Biomes.FOREST, Biomes.FOREST_HILLS, Biomes.MUTATED_FOREST,
+                Biomes.TAIGA, Biomes.TAIGA_HILLS, Biomes.REDWOOD_TAIGA, Biomes.REDWOOD_TAIGA_HILLS,
+                Biomes.MUTATED_REDWOOD_TAIGA, Biomes.MUTATED_REDWOOD_TAIGA_HILLS, Biomes.MUTATED_TAIGA,
+                Biomes.EXTREME_HILLS, Biomes.EXTREME_HILLS_EDGE, Biomes.EXTREME_HILLS_WITH_TREES,
+                Biomes.MUTATED_EXTREME_HILLS, Biomes.MUTATED_EXTREME_HILLS_WITH_TREES, Biomes.ROOFED_FOREST,
+                Biomes.MUTATED_ROOFED_FOREST, Biomes.COLD_TAIGA, Biomes.COLD_TAIGA_HILLS, Biomes.MUTATED_TAIGA_COLD);
+        
         //Deer
-        registerFFEntityWithSpawnEgg(EntityDeer.class, "ffDeer", 80, 3, true, 0x765134, 0xF7EFE6, EnumCreatureType.CREATURE, 11, 2, 4,
+        registerFFEntityWithSpawnEgg(EntityDeer.class, "ffDeer", 80, 3, true, 0x765134, 0xF7EFE6, EnumCreatureType.CREATURE, 10, 2, 4,
                 Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.MUTATED_BIRCH_FOREST,
                 Biomes.MUTATED_BIRCH_FOREST_HILLS, Biomes.FOREST, Biomes.FOREST_HILLS, Biomes.MUTATED_FOREST,
                 Biomes.TAIGA, Biomes.TAIGA_HILLS, Biomes.REDWOOD_TAIGA, Biomes.REDWOOD_TAIGA_HILLS,
