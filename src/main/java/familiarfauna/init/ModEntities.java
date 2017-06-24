@@ -1,6 +1,5 @@
 package familiarfauna.init;
 
-import java.util.List;
 import java.util.Map;
 
 import com.google.common.collect.Maps;
@@ -17,7 +16,6 @@ import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biome.SpawnListEntry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
@@ -33,15 +31,14 @@ public class ModEntities
     public static void init()
     {
         //Deer
-        registerFFEntityWithSpawnEgg(EntityDeer.class, "ffDeer", 80, 3, true, 0x765134, 0xF7EFE6, EnumCreatureType.CREATURE, 8, 1, 3,
+        registerFFEntityWithSpawnEgg(EntityDeer.class, "ffDeer", 80, 3, true, 0x765134, 0xF7EFE6, EnumCreatureType.CREATURE, 11, 2, 4,
                 Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.MUTATED_BIRCH_FOREST,
                 Biomes.MUTATED_BIRCH_FOREST_HILLS, Biomes.FOREST, Biomes.FOREST_HILLS, Biomes.MUTATED_FOREST,
                 Biomes.TAIGA, Biomes.TAIGA_HILLS, Biomes.REDWOOD_TAIGA, Biomes.REDWOOD_TAIGA_HILLS,
                 Biomes.MUTATED_REDWOOD_TAIGA, Biomes.MUTATED_REDWOOD_TAIGA_HILLS, Biomes.MUTATED_TAIGA,
                 Biomes.EXTREME_HILLS, Biomes.EXTREME_HILLS_EDGE, Biomes.EXTREME_HILLS_WITH_TREES,
                 Biomes.MUTATED_EXTREME_HILLS, Biomes.MUTATED_EXTREME_HILLS_WITH_TREES, Biomes.ROOFED_FOREST,
-                Biomes.MUTATED_ROOFED_FOREST, Biomes.COLD_TAIGA, Biomes.COLD_TAIGA_HILLS, Biomes.MUTATED_TAIGA_COLD,
-                ModCompat.coniferous_forest);
+                Biomes.MUTATED_ROOFED_FOREST, Biomes.COLD_TAIGA, Biomes.COLD_TAIGA_HILLS, Biomes.MUTATED_TAIGA_COLD);
         
         //Butterfly
     	registerFFEntityWithSpawnEgg(EntityButterfly.class, "ffButterfly", 80, 3, true, 0x282828, 0xEF6F1F, EnumCreatureType.AMBIENT, 2, 2, 4,
@@ -67,7 +64,7 @@ public class ModEntities
     {
         int ffEntityId = registerFFEntity(entityClass, entityName, trackingRange, updateFrequency, sendsVelocityUpdates);
         EntityRegistry.registerEgg(new ResourceLocation(FamiliarFauna.MOD_ID, entityName), eggBackgroundColor, eggForegroundColor);
-        addSpawn(entityClass, spawnWeight, spawnMin, spawnMax, enumCreatureType, biomes);
+        EntityRegistry.addSpawn(entityClass, spawnWeight, spawnMin, spawnMax, enumCreatureType, biomes);
         return ffEntityId;
     }
     
@@ -96,33 +93,5 @@ public class ModEntities
         	FamiliarFauna.logger.warn("Skipping FF Entity with id " + tanEntityId);
         }        
         return entity;
-    }
-    
-    public static void addSpawn(Class <? extends EntityLiving > entityClass, int weightedProb, int min, int max, EnumCreatureType typeOfCreature, Biome... biomes)
-    {
-        for (Biome biome : biomes)
-        {
-            if (biome != null)
-            {
-                List<SpawnListEntry> spawns = biome.getSpawnableList(typeOfCreature);
-    
-                boolean found = false;
-                for (SpawnListEntry entry : spawns)
-                {
-                    //Adjusting an existing spawn entry
-                    if (entry.entityClass == entityClass)
-                    {
-                        entry.itemWeight = weightedProb;
-                        entry.minGroupCount = min;
-                        entry.maxGroupCount = max;
-                        found = true;
-                        break;
-                    }
-                }
-    
-                if (!found)
-                    spawns.add(new SpawnListEntry(entityClass, weightedProb, min, max));
-            }
-        }
     }
 }
