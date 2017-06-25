@@ -18,7 +18,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = FamiliarFauna.MOD_ID, version = FamiliarFauna.MOD_VERSION, name = FamiliarFauna.MOD_NAME, dependencies = "required-after:forge@[1.0.0.0,)", guiFactory = FamiliarFauna.GUI_FACTORY)
+@Mod(modid = FamiliarFauna.MOD_ID, version = FamiliarFauna.MOD_VERSION, name = FamiliarFauna.MOD_NAME, dependencies = "required-after:forge@[1.0.0.0,);" + "after:biomesoplenty;", guiFactory = FamiliarFauna.GUI_FACTORY)
 public class FamiliarFauna
 {
     public static final String MOD_NAME = "FamiliarFauna";
@@ -41,6 +41,8 @@ public class FamiliarFauna
     	configDirectory = new File(event.getModConfigurationDirectory(), "familiarfauna");
     	ModConfiguration.init(configDirectory);
     	
+    	ModCompat.init();
+    	
     	ModEntities.init();
         ModItems.init();
         
@@ -48,11 +50,5 @@ public class FamiliarFauna
         ModCrafting.init();
         
         proxy.registerRenderers();
-    }
-    
-    @EventHandler
-    public void init(FMLInitializationEvent event) 
-    {
-        ModCompat.init();
     }
 }

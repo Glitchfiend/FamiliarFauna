@@ -46,7 +46,7 @@ public class ModEntities
                 ModCompat.coniferous_forest);
         
         //Deer
-        registerFFEntityWithSpawnEgg(EntityDeer.class, "ffDeer", 80, 3, true, 0x765134, 0xF7EFE6, EnumCreatureType.CREATURE, 10, 2, 4,
+        registerFFEntityWithSpawnEgg(EntityDeer.class, "ffDeer", 80, 3, true, 0x765134, 0xF7EFE6, EnumCreatureType.CREATURE, 9, 2, 4,
                 Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.MUTATED_BIRCH_FOREST,
                 Biomes.MUTATED_BIRCH_FOREST_HILLS, Biomes.FOREST, Biomes.FOREST_HILLS, Biomes.MUTATED_FOREST,
                 Biomes.TAIGA, Biomes.TAIGA_HILLS, Biomes.REDWOOD_TAIGA, Biomes.REDWOOD_TAIGA_HILLS,
