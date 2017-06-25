@@ -1,0 +1,20 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "P",
+    "G"
+  ],
+  "key": {
+    "P": {
+      "type": "forge:ore_dict",
+	  "ore": "paneGlass"
+    },
+	"G": {
+      "type": "forge:ore_dict",
+	  "ore": "blockGlass"
+    }
+  },
+  "result": {
+    "item": "familiarfauna:bug_habitat"
+  }
+}

@@ -1,11 +1,14 @@
 package familiarfauna.init;
 
+import static familiarfauna.api.FFItems.bug_habitat;
 import static familiarfauna.api.FFItems.bug_net;
 import static familiarfauna.api.FFItems.ff_icon;
 import static familiarfauna.api.FFItems.venison_cooked;
 import static familiarfauna.api.FFItems.venison_raw;
 
 import familiarfauna.core.FamiliarFauna;
+import familiarfauna.item.ItemBugHabitat;
+import familiarfauna.item.ItemBugNet;
 import familiarfauna.util.inventory.CreativeTabFF;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -33,8 +36,9 @@ public class ModItems
     	ff_icon = registerItem(new Item(), "ff_icon");
         ff_icon.setCreativeTab(null);
         
-        //Bug Net
-        bug_net = registerItem(new Item(), "bug_net");
+        //Bug Catching Items
+        bug_net = registerItem(new ItemBugNet(), "bug_net");
+        bug_habitat = registerItem(new ItemBugHabitat(), "bug_habitat");
         
         //Venison
         venison_raw = registerItem(new ItemFood(3, 0.3F, true), "venison_raw");
