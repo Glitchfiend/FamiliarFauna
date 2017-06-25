@@ -1,5 +1,7 @@
 package familiarfauna.init;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import com.google.common.collect.Maps;
@@ -10,13 +12,14 @@ import familiarfauna.entities.EntityDeer;
 import familiarfauna.entities.EntitySnail;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList.EntityEggInfo;
-import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.Biome.SpawnListEntry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
@@ -32,14 +35,15 @@ public class ModEntities
     public static void init()
     {
         //Remove cows from the biomes deer spawn in
-        EntityRegistry.removeSpawn(EntityCow.class, EnumCreatureType.CREATURE,
+        removeSpawn(EntityCow.class, EnumCreatureType.CREATURE,
                 Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.MUTATED_BIRCH_FOREST,
                 Biomes.MUTATED_BIRCH_FOREST_HILLS, Biomes.FOREST, Biomes.FOREST_HILLS, Biomes.MUTATED_FOREST,
                 Biomes.TAIGA, Biomes.TAIGA_HILLS, Biomes.REDWOOD_TAIGA, Biomes.REDWOOD_TAIGA_HILLS,
                 Biomes.MUTATED_REDWOOD_TAIGA, Biomes.MUTATED_REDWOOD_TAIGA_HILLS, Biomes.MUTATED_TAIGA,
                 Biomes.EXTREME_HILLS, Biomes.EXTREME_HILLS_EDGE, Biomes.EXTREME_HILLS_WITH_TREES,
                 Biomes.MUTATED_EXTREME_HILLS, Biomes.MUTATED_EXTREME_HILLS_WITH_TREES, Biomes.ROOFED_FOREST,
-                Biomes.MUTATED_ROOFED_FOREST, Biomes.COLD_TAIGA, Biomes.COLD_TAIGA_HILLS, Biomes.MUTATED_TAIGA_COLD);
+                Biomes.MUTATED_ROOFED_FOREST, Biomes.COLD_TAIGA, Biomes.COLD_TAIGA_HILLS, Biomes.MUTATED_TAIGA_COLD,
+                ModCompat.coniferous_forest);
         
         //Deer
         registerFFEntityWithSpawnEgg(EntityDeer.class, "ffDeer", 80, 3, true, 0x765134, 0xF7EFE6, EnumCreatureType.CREATURE, 10, 2, 4,
@@ -49,7 +53,8 @@ public class ModEntities
                 Biomes.MUTATED_REDWOOD_TAIGA, Biomes.MUTATED_REDWOOD_TAIGA_HILLS, Biomes.MUTATED_TAIGA,
                 Biomes.EXTREME_HILLS, Biomes.EXTREME_HILLS_EDGE, Biomes.EXTREME_HILLS_WITH_TREES,
                 Biomes.MUTATED_EXTREME_HILLS, Biomes.MUTATED_EXTREME_HILLS_WITH_TREES, Biomes.ROOFED_FOREST,
-                Biomes.MUTATED_ROOFED_FOREST, Biomes.COLD_TAIGA, Biomes.COLD_TAIGA_HILLS, Biomes.MUTATED_TAIGA_COLD);
+                Biomes.MUTATED_ROOFED_FOREST, Biomes.COLD_TAIGA, Biomes.COLD_TAIGA_HILLS, Biomes.MUTATED_TAIGA_COLD,
+                ModCompat.coniferous_forest);
         
         //Butterfly
     	registerFFEntityWithSpawnEgg(EntityButterfly.class, "ffButterfly", 80, 3, true, 0x282828, 0xEF6F1F, EnumCreatureType.AMBIENT, 2, 2, 4,
@@ -75,7 +80,7 @@ public class ModEntities
     {
         int ffEntityId = registerFFEntity(entityClass, entityName, trackingRange, updateFrequency, sendsVelocityUpdates);
         EntityRegistry.registerEgg(new ResourceLocation(FamiliarFauna.MOD_ID, entityName), eggBackgroundColor, eggForegroundColor);
-        EntityRegistry.addSpawn(entityClass, spawnWeight, spawnMin, spawnMax, enumCreatureType, biomes);
+        addSpawn(entityClass, spawnWeight, spawnMin, spawnMax, enumCreatureType, biomes);
         return ffEntityId;
     }
     
@@ -104,5 +109,53 @@ public class ModEntities
         	FamiliarFauna.logger.warn("Skipping FF Entity with id " + tanEntityId);
         }        
         return entity;
+    }
+    
+    public static void addSpawn(Class <? extends EntityLiving > entityClass, int weightedProb, int min, int max, EnumCreatureType typeOfCreature, Biome... biomes)
+    {
+        for (Biome biome : biomes)
+        {
+            if (biome != null)
+            {
+                List<SpawnListEntry> spawns = biome.getSpawnableList(typeOfCreature);
+    
+                boolean found = false;
+                for (SpawnListEntry entry : spawns)
+                {
+                    //Adjusting an existing spawn entry
+                    if (entry.entityClass == entityClass)
+                    {
+                        entry.itemWeight = weightedProb;
+                        entry.minGroupCount = min;
+                        entry.maxGroupCount = max;
+                        found = true;
+                        break;
+                    }
+                }
+    
+                if (!found)
+                    spawns.add(new SpawnListEntry(entityClass, weightedProb, min, max));
+            }
+        }
+    }
+    
+    public static void removeSpawn(Class <? extends EntityLiving > entityClass, EnumCreatureType typeOfCreature, Biome... biomes)
+    {
+        for (Biome biome : biomes)
+        {
+            if (biome != null)
+            {
+                Iterator<SpawnListEntry> spawns = biome.getSpawnableList(typeOfCreature).iterator();
+    
+                while (spawns.hasNext())
+                {
+                    SpawnListEntry entry = spawns.next();
+                    if (entry.entityClass == entityClass)
+                    {
+                        spawns.remove();
+                    }
+                }
+            }
+        }
     }
 }

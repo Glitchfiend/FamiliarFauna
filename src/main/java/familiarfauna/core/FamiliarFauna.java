@@ -5,6 +5,7 @@ import java.io.File;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import familiarfauna.init.ModCompat;
 import familiarfauna.init.ModConfiguration;
 import familiarfauna.init.ModCrafting;
 import familiarfauna.init.ModEntities;
@@ -14,6 +15,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = FamiliarFauna.MOD_ID, version = FamiliarFauna.MOD_VERSION, name = FamiliarFauna.MOD_NAME, dependencies = "required-after:forge@[1.0.0.0,)", guiFactory = FamiliarFauna.GUI_FACTORY)
@@ -46,5 +48,11 @@ public class FamiliarFauna
         ModCrafting.init();
         
         proxy.registerRenderers();
+    }
+    
+    @EventHandler
+    public void init(FMLInitializationEvent event) 
+    {
+        ModCompat.init();
     }
 }
