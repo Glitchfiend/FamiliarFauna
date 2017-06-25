@@ -3,9 +3,9 @@ itemGroup.tabFamiliarFauna=Familiar Fauna
 config.category.mobSettings.title=Spawn Settings
 config.category.mobSettings.tooltip=Toggle spawns for mobs
 
-entity.ffDeer.name=Deer
-entity.ffButterfly.name=Butterfly
-entity.ffSnail.name=Snail
+entity.familiarfauna.deer.name=Deer
+entity.familiarfauna.butterfly.name=Butterfly
+entity.familiarfauna.snail.name=Snail
 
 item.bug_net.name=Bug Net
 item.venison_raw.name=Raw Venison

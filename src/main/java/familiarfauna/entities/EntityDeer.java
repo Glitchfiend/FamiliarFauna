@@ -64,20 +64,6 @@ public class EntityDeer extends EntityAnimal implements IMob
     }
     
     @Override
-    public void writeEntityToNBT(NBTTagCompound tagCompound)
-    {
-        super.writeEntityToNBT(tagCompound);
-        tagCompound.setInteger("DeerType", this.getDeerType());
-    }
-
-    @Override
-    public void readEntityFromNBT(NBTTagCompound tagCompund)
-    {
-        super.readEntityFromNBT(tagCompund);
-        this.setDeerType(tagCompund.getInteger("DeerType"));
-    }
-    
-    @Override
     protected void initEntityAI()
     {
         this.tasks.addTask(0, new EntityAISwimming(this));
@@ -95,6 +81,20 @@ public class EntityDeer extends EntityAnimal implements IMob
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(8.5D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.2D);
+    }
+    
+    @Override
+    public void writeEntityToNBT(NBTTagCompound tagCompound)
+    {
+        super.writeEntityToNBT(tagCompound);
+        tagCompound.setInteger("DeerType", this.getDeerType());
+    }
+
+    @Override
+    public void readEntityFromNBT(NBTTagCompound tagCompund)
+    {
+        super.readEntityFromNBT(tagCompund);
+        this.setDeerType(tagCompund.getInteger("DeerType"));
     }
 
     @Override
@@ -145,7 +145,7 @@ public class EntityDeer extends EntityAnimal implements IMob
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
     {
         livingdata = super.onInitialSpawn(difficulty, livingdata);
-        int i = this.rand.nextInt(1);
+        int i = this.rand.nextInt(2);
         int ii = this.rand.nextInt(5);
         boolean flag = false;
 
