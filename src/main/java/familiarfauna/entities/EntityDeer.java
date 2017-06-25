@@ -8,41 +8,33 @@
 
 package familiarfauna.entities;
 
-import java.util.List;
-import java.util.Random;
-
 import javax.annotation.Nullable;
 
+import familiarfauna.api.FFSounds;
 import familiarfauna.init.ModLootTable;
-import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
-import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityAIFollowParent;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIMate;
 import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWanderAvoidWater;
-import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.stats.StatList;
-import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
@@ -81,6 +73,24 @@ public class EntityDeer extends EntityAnimal implements IMob
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(8.5D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.2D);
+    }
+    
+    @Override
+    protected SoundEvent getHurtSound(DamageSource source)
+    {
+        return FFSounds.deer_hurt;
+    }
+    
+    @Override
+    protected SoundEvent getDeathSound()
+    {
+        return FFSounds.deer_dead;
+    }
+    
+    @Override
+    protected void playStepSound(BlockPos pos, Block blockIn)
+    {
+        this.playSound(FFSounds.deer_step, 0.15F, 1.0F);
     }
     
     @Override

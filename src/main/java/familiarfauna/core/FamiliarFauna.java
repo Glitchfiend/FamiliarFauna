@@ -11,11 +11,11 @@ import familiarfauna.init.ModCrafting;
 import familiarfauna.init.ModEntities;
 import familiarfauna.init.ModItems;
 import familiarfauna.init.ModLootTable;
+import familiarfauna.init.ModSounds;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = FamiliarFauna.MOD_ID, version = FamiliarFauna.MOD_VERSION, name = FamiliarFauna.MOD_NAME, dependencies = "required-after:forge@[1.0.0.0,);" + "after:biomesoplenty;", guiFactory = FamiliarFauna.GUI_FACTORY)
@@ -42,6 +42,7 @@ public class FamiliarFauna
     	ModConfiguration.init(configDirectory);
     	
     	ModCompat.init();
+    	ModSounds.init();
     	
     	ModEntities.init();
         ModItems.init();

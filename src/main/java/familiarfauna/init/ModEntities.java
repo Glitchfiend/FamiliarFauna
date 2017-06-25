@@ -32,9 +32,9 @@ public class ModEntities
 
     private static int nextFFEntityId = 1;
     
-    public static Biome[] DEER_BIOMES = new Biome[] {Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS, Biomes.MUTATED_BIRCH_FOREST,
-            Biomes.MUTATED_BIRCH_FOREST_HILLS, Biomes.FOREST, Biomes.FOREST_HILLS, Biomes.MUTATED_FOREST,
-            Biomes.TAIGA, Biomes.TAIGA_HILLS, Biomes.REDWOOD_TAIGA, Biomes.REDWOOD_TAIGA_HILLS,
+    public static Biome[] DEER_BIOMES = new Biome[] {Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS,
+            Biomes.MUTATED_BIRCH_FOREST, Biomes.MUTATED_BIRCH_FOREST_HILLS, Biomes.FOREST, Biomes.FOREST_HILLS,
+            Biomes.MUTATED_FOREST, Biomes.TAIGA, Biomes.TAIGA_HILLS, Biomes.REDWOOD_TAIGA, Biomes.REDWOOD_TAIGA_HILLS,
             Biomes.MUTATED_REDWOOD_TAIGA, Biomes.MUTATED_REDWOOD_TAIGA_HILLS, Biomes.MUTATED_TAIGA,
             Biomes.EXTREME_HILLS, Biomes.EXTREME_HILLS_EDGE, Biomes.EXTREME_HILLS_WITH_TREES,
             Biomes.MUTATED_EXTREME_HILLS, Biomes.MUTATED_EXTREME_HILLS_WITH_TREES, Biomes.ROOFED_FOREST,
@@ -44,13 +44,13 @@ public class ModEntities
             ModCompat.seasonal_forest, ModCompat.shield, ModCompat.snowy_coniferous_forest, ModCompat.snowy_forest,
             ModCompat.temperate_rainforest, ModCompat.woodland};
     
-    public static Biome[] BUTTERFLY_BIOMES = new Biome[] {Biomes.PLAINS, Biomes.MUTATED_PLAINS, Biomes.FOREST, Biomes.FOREST_HILLS, Biomes.MUTATED_FOREST,
-            ModCompat.cherry_blossom_grove, ModCompat.flower_field, ModCompat.flower_island,
-            ModCompat.grove, ModCompat.lavender_fields, ModCompat.meadow, ModCompat.mystic_grove,
+    public static Biome[] BUTTERFLY_BIOMES = new Biome[] {Biomes.PLAINS, Biomes.MUTATED_PLAINS, Biomes.FOREST,
+            Biomes.FOREST_HILLS, Biomes.MUTATED_FOREST, ModCompat.cherry_blossom_grove, ModCompat.flower_field,
+            ModCompat.flower_island, ModCompat.grove, ModCompat.lavender_fields, ModCompat.meadow, ModCompat.mystic_grove,
             ModCompat.orchard, ModCompat.rainforest, ModCompat.tropical_island};
     
     public static Biome[] SNAIL_BIOMES = new Biome[] {Biomes.SWAMPLAND, Biomes.MUTATED_SWAMPLAND,
-            ModCompat.bayou, ModCompat.bog, ModCompat.dead_swamp, ModCompat.fen, ModCompat.lush_swamp,
+            ModCompat.bayou, ModCompat.bog, ModCompat.dead_swamp, ModCompat.fen, ModCompat.lush_swamp, ModCompat.marsh,
             ModCompat.moor, ModCompat.quagmire, ModCompat.wetland};
     
     public static void init()

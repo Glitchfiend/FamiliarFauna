@@ -1,0 +1,12 @@
+{
+  "entity.familiarfauna.deer.hurt": {
+    "sounds": [
+      "familiarfauna:entity/deer/hurt"
+    ]
+  },
+  "entity.familiarfauna.deer.dead": {
+    "sounds": [
+      "familiarfauna:entity/deer/dead"
+    ]
+  }
+}
