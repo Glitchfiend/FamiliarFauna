@@ -74,7 +74,7 @@ public class EntityButterfly extends EntityFlying implements IMob
                 
                 ItemStack habitat = new ItemStack(FFItems.bug_habitat);
                 habitat.setTagCompound(new NBTTagCompound());
-                habitat.getTagCompound().setString("Bug", this.getEntityString());
+                habitat.getTagCompound().setString("Bug", "butterfly");
                 
                 habitat.getTagCompound().setInteger("Type", this.getButterflyType());
 

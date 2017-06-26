@@ -56,10 +56,7 @@ public class ItemBugHabitat extends Item
         {
             String bugName = stack.getTagCompound().getString("Bug");
             
-            if (bugName.contains("butterfly"))
-            {
-                bugString = " - " + I18n.translateToLocal("entity.familiarfauna.butterfly.name");
-            }
+            bugString = " - " + I18n.translateToLocal("entity.familiarfauna." + bugName + ".name");
         }
         
         return I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name").trim() + bugString;
@@ -103,7 +100,7 @@ public class ItemBugHabitat extends Item
                 bugType = stack.getTagCompound().getInteger("Type");
             }
             
-            if (bugName.contains("butterfly"))
+            if (bugName == "butterfly")
             {
                 EntityButterfly bug = new EntityButterfly(world);
                 
@@ -128,7 +125,6 @@ public class ItemBugHabitat extends Item
                 {
                     player.dropItem(new ItemStack(FFItems.bug_habitat), false);
                 }
-                
                 
                 return true;
             }
