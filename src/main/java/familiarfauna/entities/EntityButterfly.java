@@ -68,6 +68,7 @@ public class EntityButterfly extends EntityFlying implements IMob
             if (emptyHabitat != ItemStack.EMPTY)
             {
                 //player.playSound(SoundEvents.ENTITY_COW_MILK, 1.0F, 1.0F);
+                player.swingArm(hand);
                 emptyHabitat.shrink(1);
                 itemstack.damageItem(1, player);
                 this.setDead();
