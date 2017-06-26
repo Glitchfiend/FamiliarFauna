@@ -109,25 +109,20 @@ public class ItemBugHabitat extends Item
                 
                 world.spawnEntity(bug);
                 bug.playLivingSound();
-                
-                if (stack.hasDisplayName())
-                {
-                    bug.setCustomNameTag(stack.getDisplayName());
-                }
-                
-                stack.shrink(1);
-                
-                if (stack.isEmpty())
-                {
-                    player.setHeldItem(hand, new ItemStack(FFItems.bug_habitat));
-                }
-                else if (!player.inventory.addItemStackToInventory(new ItemStack(FFItems.bug_habitat)))
-                {
-                    player.dropItem(new ItemStack(FFItems.bug_habitat), false);
-                }
-                
-                return true;
             }
+            
+            stack.shrink(1);
+            
+            if (stack.isEmpty())
+            {
+                player.setHeldItem(hand, new ItemStack(FFItems.bug_habitat));
+            }
+            else if (!player.inventory.addItemStackToInventory(new ItemStack(FFItems.bug_habitat)))
+            {
+                player.dropItem(new ItemStack(FFItems.bug_habitat), false);
+            }
+            
+            return true;
         }
         
         return false;
@@ -143,8 +138,7 @@ public class ItemBugHabitat extends Item
         }
 
         Vec3d releasePoint = this.getAirPositionInFrontOfPlayer(world, player, 0.8D);
-        this.releaseBug(stack, world, player, hand, releasePoint);
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
+        return this.releaseBug(stack, world, player, hand, releasePoint) ? new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack) : new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
     }
     
     
