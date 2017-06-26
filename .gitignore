@@ -1,9 +1,20 @@
-run/*
-bin/*
-.gradle/*
-.settings/*
-
-.project
-.classpath
-/bin/
 /build/
+/bin/
+/out/
+/Mixin/
+/repo/
+/run/
+.idea/*
+/.gradle/
+/.settings/
+/.classpath
+/.project
+
+# OS generated files
+*.DS_Store
+
+# IntelliJ project files
+*.iml
+*.ipr
+*.iws
+

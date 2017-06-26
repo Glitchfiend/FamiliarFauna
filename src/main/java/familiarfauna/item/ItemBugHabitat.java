@@ -73,9 +73,9 @@ public class ItemBugHabitat extends Item
 
         Vec3d playerEyePosition = new Vec3d(player.posX, player.posY + (double)player.getEyeHeight(), player.posZ);
         Vec3d targetPosition = playerEyePosition.addVector((double)facingX * targetDistance, (double)facingY * targetDistance, (double)facingZ * targetDistance);
-        
+
         // see if there's anything in the way
-        RayTraceResult hit = world.rayTraceBlocks(playerEyePosition, targetPosition, true, false, false);
+        RayTraceResult hit = this.rayTrace(world, player, true);
         if (hit == null)
         {
             return targetPosition;
@@ -90,7 +90,7 @@ public class ItemBugHabitat extends Item
     
     public boolean releaseBug(ItemStack stack, World world, EntityPlayer player, EnumHand hand, Vec3d releasePoint)
     {
-        if (stack.hasTagCompound() && stack.getTagCompound().hasKey("Bug"))
+        if (stack.hasTagCompound() && stack.getTagCompound().hasKey("Bug") && !world.isRemote)
         {
             String bugName = stack.getTagCompound().getString("Bug");
             int bugType = 0;
@@ -110,17 +110,9 @@ public class ItemBugHabitat extends Item
                 world.spawnEntity(bug);
                 bug.playLivingSound();
             }
-            
-            stack.shrink(1);
-            
-            if (stack.isEmpty())
-            {
-                player.setHeldItem(hand, new ItemStack(FFItems.bug_habitat));
-            }
-            else if (!player.inventory.addItemStackToInventory(new ItemStack(FFItems.bug_habitat)))
-            {
-                player.dropItem(new ItemStack(FFItems.bug_habitat), false);
-            }
+
+            stack.getTagCompound().removeTag("Bug");
+            stack.getTagCompound().removeTag("Type");
             
             return true;
         }
@@ -137,25 +129,7 @@ public class ItemBugHabitat extends Item
             return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
         }
 
-        Vec3d releasePoint = this.getAirPositionInFrontOfPlayer(world, player, 0.8D);
+        Vec3d releasePoint = this.getAirPositionInFrontOfPlayer(world, player, 2D);
         return this.releaseBug(stack, world, player, hand, releasePoint) ? new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack) : new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
-    }
-    
-    
-    @Override
-    public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-    {
-        ItemStack stack = player.getHeldItem(hand);
-        if (world.isRemote)
-        {
-            return EnumActionResult.FAIL;
-        }
-
-        double distX = hitX - player.posX;
-        double distY = hitY - (player.posY + (double)player.getEyeHeight());
-        double distZ = hitZ - player.posZ;                
-        double a = 0.9D;
-        Vec3d releasePoint = new Vec3d(player.posX + a * distX, player.posY + (double)player.getEyeHeight() + a * distY, player.posZ + a * distZ);
-        return this.releaseBug(stack, world, player, hand, releasePoint) ? EnumActionResult.SUCCESS : EnumActionResult.FAIL;
     }
 }
