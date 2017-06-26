@@ -37,7 +37,7 @@ public class EntityButterfly extends EntityFlying implements IMob
 
     public EntityButterfly(World worldIn) {
         super(worldIn);
-        this.setSize(0.5F, 0.5F);
+        this.setSize(0.7F, 0.7F);
         
         this.moveHelper = new EntityButterfly.ButterflyMoveHelper();
         this.tasks.addTask(3, new EntityButterfly.AIButterflyRandomFly());
