@@ -5,22 +5,31 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import javax.annotation.Nonnull;
+
+import familiarfauna.api.FFItems;
+import familiarfauna.item.ItemBugHabitat;
 import net.minecraft.entity.EntityFlying;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityMoveHelper;
 import net.minecraft.entity.monster.IMob;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 
 public class EntityButterfly extends EntityFlying implements IMob
 {
@@ -46,6 +55,77 @@ public class EntityButterfly extends EntityFlying implements IMob
     {
         super.entityInit();
         this.dataManager.register(TYPE, Byte.valueOf((byte)0));
+    }
+    
+    @Override
+    public boolean processInteract(EntityPlayer player, EnumHand hand)
+    {
+        ItemStack itemstack = player.getHeldItem(hand);
+
+        if (itemstack.getItem() == FFItems.bug_net && !player.capabilities.isCreativeMode && !this.isChild())
+        {
+            ItemStack emptyHabitat = findEmptyHabitatStack(player);
+            if (emptyHabitat != ItemStack.EMPTY)
+            {
+                //player.playSound(SoundEvents.ENTITY_COW_MILK, 1.0F, 1.0F);
+                emptyHabitat.shrink(1);
+                itemstack.damageItem(1, player);
+                this.setDead();
+                
+                ItemStack habitat = new ItemStack(FFItems.bug_habitat);
+                habitat.setTagCompound(new NBTTagCompound());
+                habitat.getTagCompound().setString("Bug", this.getEntityString());
+                
+                habitat.getTagCompound().setInteger("Type", this.getButterflyType());
+
+                if (!player.inventory.addItemStackToInventory(habitat))
+                {
+                    player.dropItem(habitat, false);
+                }
+    
+                return true;
+            }
+            else
+            {
+                return super.processInteract(player, hand);
+            }
+        }
+        else
+        {
+            return super.processInteract(player, hand);
+        }
+    }
+    
+    @Nonnull
+    public static ItemStack findEmptyHabitatStack(EntityPlayer player)
+    {
+        //Search every item in the player's main inventory for a bug habitat
+        for (ItemStack stack : player.inventory.mainInventory)
+        {
+            if (isHabitatEmpty(stack))
+            {
+                return stack;
+            }
+        }
+        
+        return ItemStack.EMPTY;
+    }
+    
+    public static boolean isHabitatEmpty(@Nonnull ItemStack stack)
+    {
+        if (!stack.isEmpty() && stack.getItem() instanceof ItemBugHabitat)
+        {
+            if (stack.hasTagCompound() && stack.getTagCompound().hasKey("Bug"))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        
+        return false;
     }
     
     public void writeEntityToNBT(NBTTagCompound tagCompound)
