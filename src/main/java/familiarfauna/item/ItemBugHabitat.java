@@ -18,6 +18,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -54,18 +55,30 @@ public class ItemBugHabitat extends Item
     }
     
     @Override
-    public String getItemStackDisplayName(ItemStack stack)
+    public String getUnlocalizedName(ItemStack stack)
     {
-        String bugString = "";
-        
         if (stack.hasTagCompound() && stack.getTagCompound().hasKey("Bug"))
         {
-            String bugName = stack.getTagCompound().getString("Bug");
-            
-            bugString = " - " + I18n.translateToLocal("entity.familiarfauna." + bugName + ".name");
+            if (!stack.getTagCompound().hasKey("Name"))
+            {
+                return super.getUnlocalizedName() + "_" + stack.getTagCompound().getString("Bug");
+            }
         }
         
-        return I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name").trim() + bugString;
+        return super.getUnlocalizedName();
+    }
+    
+    @Override
+    public String getItemStackDisplayName(ItemStack stack)
+    {
+        
+        if (stack.hasTagCompound() && stack.getTagCompound().hasKey("Name"))
+        {
+            String name = stack.getTagCompound().getString("Name");
+            return I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name").trim() + " - " + TextFormatting.ITALIC + name + TextFormatting.RESET;
+        }
+        
+        return I18n.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name").trim();
     }
     
     protected Vec3d getAirPositionInFrontOfPlayer(World world, EntityPlayer player, double targetDistance)
@@ -113,12 +126,19 @@ public class ItemBugHabitat extends Item
                 bug.setButterflyType(bugType);
                 bug.setLocationAndAngles(releasePoint.x, releasePoint.y, releasePoint.z, MathHelper.wrapDegrees(world.rand.nextFloat() * 360.0F), 0.0F);
                 
+                if (stack.getTagCompound().hasKey("Name"))
+                {
+                    String entityName = stack.getTagCompound().getString("Name");
+                    bug.setCustomNameTag(entityName);
+                }
+                
                 world.spawnEntity(bug);
                 bug.playLivingSound();
             }
 
             stack.getTagCompound().removeTag("Bug");
             stack.getTagCompound().removeTag("Type");
+            stack.getTagCompound().removeTag("Name");
             
             return true;
         }

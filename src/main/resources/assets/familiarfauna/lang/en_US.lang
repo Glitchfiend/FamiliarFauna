@@ -8,6 +8,7 @@ entity.familiarfauna.butterfly.name=Butterfly
 entity.familiarfauna.snail.name=Snail
 
 item.bug_habitat.name=Bug Habitat
+item.bug_habitat_butterfly.name=Bug Habitat - Butterfly
 item.bug_net.name=Bug Net
 item.venison_raw.name=Raw Venison
 item.venison_cooked.name=Cooked Venison

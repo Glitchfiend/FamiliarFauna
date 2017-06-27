@@ -77,6 +77,11 @@ public class EntityButterfly extends EntityFlying implements IMob
                 habitat.setTagCompound(new NBTTagCompound());
                 habitat.getTagCompound().setString("Bug", "butterfly");
                 
+                if (this.getCustomNameTag() != "")
+                {
+                    habitat.getTagCompound().setString("Name", this.getCustomNameTag());
+                }
+                
                 habitat.getTagCompound().setInteger("Type", this.getButterflyType());
 
                 if (!player.inventory.addItemStackToInventory(habitat))
