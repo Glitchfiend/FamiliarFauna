@@ -14,6 +14,8 @@ public class RenderButterfly extends RenderLiving<EntityButterfly>
     private static final ResourceLocation ORANGE = new ResourceLocation("familiarfauna:textures/entity/butterfly/orange.png");
     private static final ResourceLocation BLUE = new ResourceLocation("familiarfauna:textures/entity/butterfly/blue.png");
     private static final ResourceLocation PURPLE = new ResourceLocation("familiarfauna:textures/entity/butterfly/purple.png");
+    private static final ResourceLocation WHITE = new ResourceLocation("familiarfauna:textures/entity/butterfly/white.png");
+    private static final ResourceLocation YELLOW = new ResourceLocation("familiarfauna:textures/entity/butterfly/yellow.png");
     
     public RenderButterfly(RenderManager renderManager)
     {
@@ -33,6 +35,10 @@ public class RenderButterfly extends RenderLiving<EntityButterfly>
                 return BLUE;
             case 2:
                 return PURPLE;
+            case 3:
+                return WHITE;
+            case 4:
+                return YELLOW;
         }
     }
 

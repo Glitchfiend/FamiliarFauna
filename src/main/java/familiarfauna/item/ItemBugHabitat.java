@@ -27,7 +27,7 @@ public class ItemBugHabitat extends Item
 {
     public ItemBugHabitat()
     {
-        this.addPropertyOverride(new ResourceLocation("occupied"), new IItemPropertyGetter()
+        this.addPropertyOverride(new ResourceLocation("variant"), new IItemPropertyGetter()
         {
             @Override
             @SideOnly(Side.CLIENT)
@@ -35,12 +35,18 @@ public class ItemBugHabitat extends Item
             {
                 if (stack.hasTagCompound() && stack.getTagCompound().hasKey("Bug"))
                 {
-                    return 1;
+                    if (stack.getTagCompound().getString("Bug") == "butterfly")
+                    {
+                        if (stack.getTagCompound().hasKey("Type"))
+                        {
+                            return (stack.getTagCompound().getInteger("Type") + 1);
+                        }
+
+                        return 1;
+                    }
                 }
-                else
-                {
-                    return 0;
-                }
+                
+                return 0;
             }  
         });
         

@@ -144,7 +144,7 @@ public class EntityButterfly extends EntityFlying implements IMob
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
     {
         livingdata = super.onInitialSpawn(difficulty, livingdata);
-        int i = this.rand.nextInt(3);
+        int i = this.rand.nextInt(5);
         boolean flag = false;
 
         if (livingdata instanceof EntityButterfly.ButterflyTypeData)
