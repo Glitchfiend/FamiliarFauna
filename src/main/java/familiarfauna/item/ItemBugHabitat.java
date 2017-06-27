@@ -2,7 +2,6 @@ package familiarfauna.item;
 
 import javax.annotation.Nonnull;
 
-import familiarfauna.api.FFItems;
 import familiarfauna.entities.EntityButterfly;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,10 +10,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
@@ -111,29 +108,34 @@ public class ItemBugHabitat extends Item
     {
         if (stack.hasTagCompound() && stack.getTagCompound().hasKey("Bug") && !world.isRemote)
         {
-            String bugName = stack.getTagCompound().getString("Bug");
+            String bugEntity = stack.getTagCompound().getString("Bug");
+            String bugName = "";
             int bugType = 0;
             
+            //Custom entity name
+            if (stack.getTagCompound().hasKey("Name"))
+            {
+                bugName = stack.getTagCompound().getString("Name");
+            }
+            
+            //Bug type (Butterfly variants, etc.)
             if (stack.getTagCompound().hasKey("Type"))
             {
                 bugType = stack.getTagCompound().getInteger("Type");
             }
             
-            if (bugName == "butterfly")
+            //Butterfly
+            if (bugEntity == "butterfly")
             {
-                EntityButterfly bug = new EntityButterfly(world);
-                
-                bug.setButterflyType(bugType);
-                bug.setLocationAndAngles(releasePoint.x, releasePoint.y, releasePoint.z, MathHelper.wrapDegrees(world.rand.nextFloat() * 360.0F), 0.0F);
-                
-                if (stack.getTagCompound().hasKey("Name"))
+                EntityButterfly butterfly = new EntityButterfly(world);
+                butterfly.setButterflyType(bugType);
+                butterfly.setLocationAndAngles(releasePoint.x, releasePoint.y, releasePoint.z, MathHelper.wrapDegrees(world.rand.nextFloat() * 360.0F), 0.0F);
+                if (bugName != "")
                 {
-                    String entityName = stack.getTagCompound().getString("Name");
-                    bug.setCustomNameTag(entityName);
+                    butterfly.setCustomNameTag(bugName);
                 }
                 
-                world.spawnEntity(bug);
-                bug.playLivingSound();
+                world.spawnEntity(butterfly);
             }
 
             stack.getTagCompound().removeTag("Bug");
