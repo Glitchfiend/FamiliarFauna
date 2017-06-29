@@ -45,10 +45,11 @@ public class ModEntities
             ModCompat.temperate_rainforest, ModCompat.woodland};
     
     public static Biome[] BUTTERFLY_BIOMES = new Biome[] {Biomes.PLAINS, Biomes.MUTATED_PLAINS, Biomes.FOREST,
-            Biomes.FOREST_HILLS, Biomes.MUTATED_FOREST, ModCompat.cherry_blossom_grove, ModCompat.flower_field,
-            ModCompat.flower_island, ModCompat.grassland, ModCompat.grove, ModCompat.lavender_fields, ModCompat.meadow,
-            ModCompat.mystic_grove, ModCompat.orchard, ModCompat.rainforest, ModCompat.sacred_springs,
-            ModCompat.tropical_island};
+            Biomes.FOREST_HILLS, Biomes.MUTATED_FOREST, Biomes.JUNGLE, Biomes.JUNGLE_EDGE, Biomes.JUNGLE_HILLS,
+            Biomes.MUTATED_JUNGLE, Biomes.MUTATED_JUNGLE_EDGE, ModCompat.cherry_blossom_grove, ModCompat.eucalyptus_forest,
+            ModCompat.flower_field, ModCompat.flower_island, ModCompat.grassland, ModCompat.grove,
+            ModCompat.lavender_fields, ModCompat.meadow, ModCompat.mystic_grove, ModCompat.orchard, ModCompat.rainforest,
+            ModCompat.sacred_springs, ModCompat.tropical_island};
     
     public static Biome[] SNAIL_BIOMES = new Biome[] {Biomes.SWAMPLAND, Biomes.MUTATED_SWAMPLAND,
             ModCompat.bayou, ModCompat.bog, ModCompat.dead_swamp, ModCompat.fen, ModCompat.lush_swamp, ModCompat.marsh,
