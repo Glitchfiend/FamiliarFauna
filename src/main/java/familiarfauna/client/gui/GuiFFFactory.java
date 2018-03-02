@@ -3,23 +3,26 @@ package familiarfauna.client.gui;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.text.WordUtils;
+
+import com.google.common.collect.Lists;
+
 import familiarfauna.config.ConfigurationHandler;
 import familiarfauna.core.FamiliarFauna;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.text.translation.I18n;
+import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.fml.client.DefaultGuiFactory;
-import net.minecraftforge.fml.client.config.DummyConfigElement.DummyCategoryElement;
+import net.minecraftforge.fml.client.config.DummyConfigElement;
 import net.minecraftforge.fml.client.config.GuiConfig;
 import net.minecraftforge.fml.client.config.IConfigElement;
-
-import static familiarfauna.config.ConfigurationHandler.SPAWN_SETTINGS;
 
 public class GuiFFFactory extends DefaultGuiFactory
 {
     public GuiFFFactory()
     {
-        super(FamiliarFauna.MOD_ID, FamiliarFauna.MOD_NAME);
+        super(FamiliarFauna.MOD_ID, "Familiar Fauna");
     }
     
     @Override
@@ -32,9 +35,17 @@ public class GuiFFFactory extends DefaultGuiFactory
     {
         List<IConfigElement> list = new ArrayList<IConfigElement>();
 
-        List<IConfigElement> spawn_settings = new ConfigElement(ConfigurationHandler.config.getCategory(SPAWN_SETTINGS.toLowerCase())).getChildElements();
+        List<IConfigElement> configChildCategories = Lists.newArrayList();
 
-        list.add(new DummyCategoryElement(I18n.translateToLocal("config.category.spawnSettings.title"), "config.category.spawnSettings", spawn_settings));
+        for (String categoryName : ConfigurationHandler.config.getCategoryNames())
+        {
+            ConfigCategory category = ConfigurationHandler.config.getCategory(categoryName);
+            List<IConfigElement> elements = new ConfigElement(category).getChildElements();
+
+            configChildCategories.add(new DummyConfigElement.DummyCategoryElement(WordUtils.capitalize(categoryName), "", elements));
+        }
+
+        list.add(new DummyConfigElement.DummyCategoryElement(I18n.translateToLocal("config.category.mobSettings.title"), "", configChildCategories));
 
         return list;
     }

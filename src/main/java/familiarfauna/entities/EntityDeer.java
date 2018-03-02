@@ -11,6 +11,7 @@ package familiarfauna.entities;
 import javax.annotation.Nullable;
 
 import familiarfauna.api.FFSounds;
+import familiarfauna.config.ConfigurationHandler;
 import familiarfauna.init.ModLootTable;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -149,6 +150,17 @@ public class EntityDeer extends EntityAnimal implements IMob
         }
         
         return false;
+    }
+    
+    @Override
+    public void onUpdate()
+    {
+        super.onUpdate();
+
+        if (!this.world.isRemote && (!(ConfigurationHandler.deerEnable)))
+        {
+            this.setDead();
+        }
     }
     
     @Override

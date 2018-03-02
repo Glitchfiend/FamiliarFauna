@@ -1,5 +1,6 @@
 package familiarfauna.entities;
 
+import familiarfauna.config.ConfigurationHandler;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -47,5 +48,16 @@ public class EntitySnail extends EntityCreature implements IMob
     public boolean canBreatheUnderwater()
     {
         return true;
+    }
+    
+    @Override
+    public void onUpdate()
+    {
+        super.onUpdate();
+
+        if (!this.world.isRemote && (!(ConfigurationHandler.snailEnable)))
+        {
+            this.setDead();
+        }
     }
 }

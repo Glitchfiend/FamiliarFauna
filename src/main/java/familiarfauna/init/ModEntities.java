@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.google.common.collect.Maps;
 
+import familiarfauna.config.ConfigurationHandler;
 import familiarfauna.core.FamiliarFauna;
 import familiarfauna.entities.EntityButterfly;
 import familiarfauna.entities.EntityDeer;
@@ -59,14 +60,17 @@ public class ModEntities
     {
         //Deer
         //Remove cows from the biomes deer spawn in
-        removeSpawn(EntityCow.class, EnumCreatureType.CREATURE, DEER_BIOMES);
-        registerFFEntityWithSpawnEgg(EntityDeer.class, "familiarfauna.deer", 80, 3, true, 0x765134, 0xF7EFE6, EnumCreatureType.CREATURE, 9, 2, 4, DEER_BIOMES);
+    	if (ConfigurationHandler.deerReplaceCows)
+		{
+			removeSpawn(EntityCow.class, EnumCreatureType.CREATURE, DEER_BIOMES);
+		}
+        registerFFEntityWithSpawnEgg(EntityDeer.class, "familiarfauna.deer", 80, 3, true, 0x765134, 0xF7EFE6, EnumCreatureType.CREATURE, ConfigurationHandler.deerWeight, ConfigurationHandler.deerMin, ConfigurationHandler.deerMax, DEER_BIOMES);
         
         //Butterfly
-    	registerFFEntityWithSpawnEgg(EntityButterfly.class, "familiarfauna.butterfly", 80, 3, true, 0x282828, 0xEF6F1F, EnumCreatureType.AMBIENT, 2, 2, 4, BUTTERFLY_BIOMES);
+    	registerFFEntityWithSpawnEgg(EntityButterfly.class, "familiarfauna.butterfly", 80, 3, true, 0x282828, 0xEF6F1F, EnumCreatureType.AMBIENT, ConfigurationHandler.butterflyWeight, ConfigurationHandler.butterflyMin, ConfigurationHandler.butterflyMax, BUTTERFLY_BIOMES);
     	
     	//Snail
-    	registerFFEntityWithSpawnEgg(EntitySnail.class, "familiarfauna.snail", 80, 3, true, 0xA694BC, 0xCDA26E, EnumCreatureType.AMBIENT, 1, 1, 1, SNAIL_BIOMES);
+    	registerFFEntityWithSpawnEgg(EntitySnail.class, "familiarfauna.snail", 80, 3, true, 0xA694BC, 0xCDA26E, EnumCreatureType.AMBIENT, ConfigurationHandler.snailWeight, ConfigurationHandler.snailMin, ConfigurationHandler.snailMax, SNAIL_BIOMES);
     }
     
     // register an entity

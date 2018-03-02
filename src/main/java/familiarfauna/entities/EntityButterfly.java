@@ -8,6 +8,7 @@ import java.util.Random;
 import javax.annotation.Nonnull;
 
 import familiarfauna.api.FFItems;
+import familiarfauna.config.ConfigurationHandler;
 import familiarfauna.item.ItemBugHabitat;
 import net.minecraft.entity.EntityFlying;
 import net.minecraft.entity.IEntityLivingData;
@@ -16,7 +17,6 @@ import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityMoveHelper;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -28,8 +28,8 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 
 public class EntityButterfly extends EntityFlying implements IMob
 {
@@ -181,6 +181,17 @@ public class EntityButterfly extends EntityFlying implements IMob
     public boolean canBePushed()
     {
         return false;
+    }
+    
+    @Override
+    public void onUpdate()
+    {
+        super.onUpdate();
+
+        if (!this.world.isRemote && (!(ConfigurationHandler.butterflyEnable)))
+        {
+            this.setDead();
+        }
     }
     
     @Override
