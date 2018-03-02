@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import familiarfauna.api.FFItems;
 import familiarfauna.config.ConfigurationHandler;
+import familiarfauna.init.ModLootTable;
 import familiarfauna.item.ItemBugHabitat;
 import net.minecraft.entity.EntityFlying;
 import net.minecraft.entity.IEntityLivingData;
@@ -24,6 +26,7 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -55,6 +58,13 @@ public class EntityButterfly extends EntityFlying implements IMob
     {
         super.entityInit();
         this.dataManager.register(TYPE, Byte.valueOf((byte)0));
+    }
+    
+    @Nullable
+    @Override
+    protected ResourceLocation getLootTable()
+    {
+        return ModLootTable.BUTTERFLY_LOOT;
     }
     
     @Override

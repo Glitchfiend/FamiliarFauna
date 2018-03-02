@@ -1,12 +1,16 @@
 package familiarfauna.entities;
 
+import javax.annotation.Nullable;
+
 import familiarfauna.config.ConfigurationHandler;
+import familiarfauna.init.ModLootTable;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -22,6 +26,13 @@ public class EntitySnail extends EntityCreature implements IMob
     protected void initEntityAI()
     {
         this.tasks.addTask(0, new EntityAIWander(this, 0.6D));
+    }
+    
+    @Nullable
+    @Override
+    protected ResourceLocation getLootTable()
+    {
+        return ModLootTable.SNAIL_LOOT;
     }
     
     @Override

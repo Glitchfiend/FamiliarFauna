@@ -6,10 +6,14 @@ import net.minecraft.world.storage.loot.LootTableList;
 
 public class ModLootTable
 {
+	public static ResourceLocation BUTTERFLY_LOOT;
     public static ResourceLocation DEER_LOOT;
+    public static ResourceLocation SNAIL_LOOT;
     
     public static void init()
     {
+        BUTTERFLY_LOOT = LootTableList.register(new ResourceLocation(FamiliarFauna.MOD_ID, "entities/butterfly"));
         DEER_LOOT = LootTableList.register(new ResourceLocation(FamiliarFauna.MOD_ID, "entities/deer"));
+        SNAIL_LOOT = LootTableList.register(new ResourceLocation(FamiliarFauna.MOD_ID, "entities/snail"));
     }
 }
