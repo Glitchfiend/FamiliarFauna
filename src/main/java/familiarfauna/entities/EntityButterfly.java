@@ -31,8 +31,8 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldType;
 
 public class EntityButterfly extends EntityFlying implements IMob
 {
@@ -202,11 +202,21 @@ public class EntityButterfly extends EntityFlying implements IMob
         {
             this.setDead();
         }
+        
+    	if (!this.world.isRemote && this.world.getWorldType() == WorldType.FLAT && !(ConfigurationHandler.butterflySuperflat))
+    	{
+    		this.setDead();
+    	}
     }
     
     @Override
     public boolean getCanSpawnHere()
     {
+    	if (this.world.getWorldType() == WorldType.FLAT && !(ConfigurationHandler.butterflySuperflat))
+    	{
+    		return false;
+    	}
+    	
     	BlockPos blockpos = new BlockPos(this.posX, this.getEntityBoundingBox().minY, this.posZ);
 
         if (blockpos.getY() <= this.world.getSeaLevel())

@@ -21,6 +21,7 @@ public class ConfigurationHandler
     public static int butterflyWeight;
     public static int butterflyMin;
     public static int butterflyMax;
+    public static boolean butterflySuperflat;
     
     public static boolean deerEnable;
     public static int deerWeight;
@@ -50,6 +51,7 @@ public class ConfigurationHandler
             butterflyWeight = config.getInt("Spawn Weight", BUTTERFLY_SETTINGS, 2, 0, Integer.MAX_VALUE, "The spawn weight for Butterflies.");
             butterflyMin = config.getInt("Min. Group Size", BUTTERFLY_SETTINGS, 2, 0, Integer.MAX_VALUE, "The minimum group size for Butterflies.");
             butterflyMax = config.getInt("Max. Group Size", BUTTERFLY_SETTINGS, 4, 0, Integer.MAX_VALUE, "The maximum group size for Butterflies.");
+            butterflySuperflat = config.getBoolean("Butterflies Spawn in Superflat", BUTTERFLY_SETTINGS, false, "Allows Butterflies to spawn in Superflat worlds.");
             
             deerEnable = config.getBoolean("Enable Deer", DEER_SETTINGS, true, "Enables Deer.  Disabling this will remove existing Deer from your world.");
             deerWeight = config.getInt("Spawn Weight", DEER_SETTINGS, 9, 0, Integer.MAX_VALUE, "The spawn weight for Deer.");
