@@ -17,7 +17,7 @@ import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityMoveHelper;
-import net.minecraft.entity.monster.IMob;
+import net.minecraft.entity.passive.IAnimals;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -34,7 +34,7 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
 
-public class EntityButterfly extends EntityFlying implements IMob
+public class EntityButterfly extends EntityFlying implements IAnimals
 {
     private static final DataParameter<Byte> TYPE = EntityDataManager.<Byte>createKey(EntityButterfly.class, DataSerializers.BYTE);
 

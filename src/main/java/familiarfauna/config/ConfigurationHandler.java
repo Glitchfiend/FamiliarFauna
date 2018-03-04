@@ -48,7 +48,7 @@ public class ConfigurationHandler
         try
         {
             butterflyEnable = config.getBoolean("Enable Butterflies", BUTTERFLY_SETTINGS, true, "Enables Butterflies.  Disabling this will remove existing Butterflies from your world.");
-            butterflyWeight = config.getInt("Spawn Weight", BUTTERFLY_SETTINGS, 2, 0, Integer.MAX_VALUE, "The spawn weight for Butterflies.");
+            butterflyWeight = config.getInt("Spawn Weight", BUTTERFLY_SETTINGS, 1, 0, Integer.MAX_VALUE, "The spawn weight for Butterflies.");
             butterflyMin = config.getInt("Min. Group Size", BUTTERFLY_SETTINGS, 2, 0, Integer.MAX_VALUE, "The minimum group size for Butterflies.");
             butterflyMax = config.getInt("Max. Group Size", BUTTERFLY_SETTINGS, 4, 0, Integer.MAX_VALUE, "The maximum group size for Butterflies.");
             butterflySuperflat = config.getBoolean("Butterflies Spawn in Superflat", BUTTERFLY_SETTINGS, false, "Allows Butterflies to spawn in Superflat worlds.");
