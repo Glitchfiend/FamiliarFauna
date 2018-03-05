@@ -26,5 +26,11 @@ public class ModCrafting
         //Registration in Ore Dictionary
         OreDictionary.registerOre("rawVenison", FFItems.venison_raw);
         OreDictionary.registerOre("cookedVenison", FFItems.venison_cooked);
+        OreDictionary.registerOre("foodVenisonraw", FFItems.venison_raw);
+        OreDictionary.registerOre("foodVenisoncooked", FFItems.venison_cooked);
+        OreDictionary.registerOre("listAllvenisonraw", FFItems.venison_raw);
+        OreDictionary.registerOre("listAllvenisoncooked", FFItems.venison_cooked);
+        OreDictionary.registerOre("listAllmeatraw", FFItems.venison_raw);
+        OreDictionary.registerOre("listAllmeatcooked", FFItems.venison_cooked);
     }
 }
