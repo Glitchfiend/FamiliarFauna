@@ -5,13 +5,15 @@ import familiarfauna.entities.model.ModelSnail;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderSnail extends RenderLiving<EntitySnail>
 {
-    private static final ResourceLocation snailTextureLocation = new ResourceLocation("familiarfauna:textures/entity/snail.png");
+    private static final ResourceLocation NORMAL = new ResourceLocation("familiarfauna:textures/entity/snail/snail.png");
+    private static final ResourceLocation GARY = new ResourceLocation("familiarfauna:textures/entity/snail/snail_gary.png");
 
     public RenderSnail(RenderManager renderManager)
     {
@@ -21,6 +23,15 @@ public class RenderSnail extends RenderLiving<EntitySnail>
     @Override
     protected ResourceLocation getEntityTexture(EntitySnail entity)
     {
-        return snailTextureLocation;
+    	String s = TextFormatting.getTextWithoutFormattingCodes(entity.getName());
+    	
+    	if (s != null && "Gary".equals(s))
+        {
+            return GARY;
+        }
+    	else
+    	{
+    		return NORMAL;
+    	}
     }
 }
