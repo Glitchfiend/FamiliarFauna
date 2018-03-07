@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "familiarfauna:items/turkey_cooked"
+        "layer0": "familiarfauna:items/turkey_leg_raw"
     }
 }

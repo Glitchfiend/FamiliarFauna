@@ -13,8 +13,8 @@ public class FFItems
 	
 	public static Item snail_shell;
 	
-	public static Item turkey_raw;
-	public static Item turkey_cooked;
+	public static Item turkey_leg_raw;
+	public static Item turkey_leg_cooked;
 	public static Item venison_raw;
 	public static Item venison_cooked;
 }

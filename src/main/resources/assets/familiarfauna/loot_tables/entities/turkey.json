@@ -2,11 +2,11 @@
     "pools": [
         {
             "rolls": 1,
-			"name": "turkey",
+			"name": "turkey_leg",
             "entries": [
                 {
                     "type": "item",
-                    "name": "familiarfauna:turkey_raw",
+                    "name": "familiarfauna:turkey_leg_raw",
                     "weight": 1,
                     "functions": [
                         {

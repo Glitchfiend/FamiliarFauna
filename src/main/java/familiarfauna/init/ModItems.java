@@ -4,8 +4,8 @@ import static familiarfauna.api.FFItems.bug_habitat;
 import static familiarfauna.api.FFItems.bug_net;
 import static familiarfauna.api.FFItems.ff_icon;
 import static familiarfauna.api.FFItems.snail_shell;
-import static familiarfauna.api.FFItems.turkey_cooked;
-import static familiarfauna.api.FFItems.turkey_raw;
+import static familiarfauna.api.FFItems.turkey_leg_cooked;
+import static familiarfauna.api.FFItems.turkey_leg_raw;
 import static familiarfauna.api.FFItems.venison_cooked;
 import static familiarfauna.api.FFItems.venison_raw;
 
@@ -49,8 +49,8 @@ public class ModItems
         snail_shell = registerItem(new Item(), "snail_shell");
         
         //Turkey
-        turkey_raw = registerItem((new ItemFood(2, 0.3F, true)).setPotionEffect(new PotionEffect(MobEffects.HUNGER, 600, 0), 0.3F), "turkey_raw");
-        turkey_cooked = registerItem(new ItemFood(6, 0.6F, true), "turkey_cooked");
+        turkey_leg_raw = registerItem((new ItemFood(2, 0.3F, true)).setPotionEffect(new PotionEffect(MobEffects.HUNGER, 600, 0), 0.3F), "turkey_leg_raw");
+        turkey_leg_cooked = registerItem(new ItemFood(6, 0.6F, true), "turkey_leg_cooked");
         
         //Venison
         venison_raw = registerItem(new ItemFood(3, 0.3F, true), "venison_raw");
