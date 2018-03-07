@@ -3,6 +3,9 @@ package familiarfauna.init;
 import static familiarfauna.api.FFItems.bug_habitat;
 import static familiarfauna.api.FFItems.bug_net;
 import static familiarfauna.api.FFItems.ff_icon;
+import static familiarfauna.api.FFItems.snail_shell;
+import static familiarfauna.api.FFItems.turkey_cooked;
+import static familiarfauna.api.FFItems.turkey_raw;
 import static familiarfauna.api.FFItems.venison_cooked;
 import static familiarfauna.api.FFItems.venison_raw;
 
@@ -13,9 +16,11 @@ import familiarfauna.util.inventory.CreativeTabFF;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
@@ -39,6 +44,13 @@ public class ModItems
         //Bug Catching Items
         bug_net = registerItem(new ItemBugNet(), "bug_net");
         bug_habitat = registerItem(new ItemBugHabitat(), "bug_habitat");
+        
+        //Snail Shell
+        snail_shell = registerItem(new Item(), "snail_shell");
+        
+        //Turkey
+        turkey_raw = registerItem((new ItemFood(2, 0.3F, true)).setPotionEffect(new PotionEffect(MobEffects.HUNGER, 600, 0), 0.3F), "turkey_raw");
+        turkey_cooked = registerItem(new ItemFood(6, 0.6F, true), "turkey_cooked");
         
         //Venison
         venison_raw = registerItem(new ItemFood(3, 0.3F, true), "venison_raw");
