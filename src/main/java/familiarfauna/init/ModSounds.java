@@ -3,6 +3,7 @@ package familiarfauna.init;
 import static familiarfauna.api.FFSounds.deer_dead;
 import static familiarfauna.api.FFSounds.deer_hurt;
 import static familiarfauna.api.FFSounds.deer_step;
+import static familiarfauna.api.FFSounds.dragonfly_ambient;
 
 import familiarfauna.core.FamiliarFauna;
 import net.minecraft.init.SoundEvents;
@@ -17,6 +18,7 @@ public class ModSounds
         deer_hurt = registerSound("entity.familiarfauna.deer.hurt");
         deer_dead = registerSound("entity.familiarfauna.deer.dead");
         deer_step = SoundEvents.ENTITY_SHEEP_STEP;
+        dragonfly_ambient = registerSound("entity.familiarfauna.dragonfly.ambient");
     }
     
     private static SoundEvent registerSound(String soundName)

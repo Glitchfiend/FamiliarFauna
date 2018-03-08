@@ -14,4 +14,5 @@ public class FFSounds
     public static SoundEvent deer_hurt;
     public static SoundEvent deer_dead;
     public static SoundEvent deer_step;
+    public static SoundEvent dragonfly_ambient;
 }

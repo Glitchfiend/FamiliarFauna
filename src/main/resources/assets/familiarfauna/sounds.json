@@ -8,5 +8,10 @@
     "sounds": [
       "familiarfauna:entity/deer/dead"
     ]
+  },
+   "entity.familiarfauna.dragonfly.ambient": {
+    "sounds": [
+      "familiarfauna:entity/dragonfly/ambient"
+    ]
   }
 }

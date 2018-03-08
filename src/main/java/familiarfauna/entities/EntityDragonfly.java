@@ -9,6 +9,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import familiarfauna.api.FFItems;
+import familiarfauna.api.FFSounds;
 import familiarfauna.config.ConfigurationHandler;
 import familiarfauna.init.ModLootTable;
 import familiarfauna.item.ItemBugHabitat;
@@ -30,6 +31,7 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -61,6 +63,29 @@ public class EntityDragonfly extends EntityAmbientCreature implements EntityFlyi
     {
         super.entityInit();
         this.dataManager.register(TYPE, Byte.valueOf((byte)0));
+    }
+
+    @Override
+    protected SoundEvent getAmbientSound()
+    {
+        return FFSounds.dragonfly_ambient;
+    }
+    
+    @Override
+    public int getTalkInterval()
+    {
+        return 80;
+    }
+    
+    @Override
+    public void playLivingSound()
+    {
+        SoundEvent soundevent = this.getAmbientSound();
+
+        if (soundevent != null)
+        {
+            this.playSound(soundevent, 0.5F, 1.0F);
+        }
     }
     
     @Nullable
