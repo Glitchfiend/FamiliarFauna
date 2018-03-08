@@ -15,6 +15,7 @@ public class ConfigurationHandler
     
     public static final String BUTTERFLY_SETTINGS = "Butterfly Settings";
     public static final String DEER_SETTINGS = "Deer Settings";
+    public static final String DRAGONFLY_SETTINGS = "Dragonfly Settings";
     public static final String SNAIL_SETTINGS = "Snail Settings";
     
     public static boolean butterflyEnable;
@@ -27,6 +28,11 @@ public class ConfigurationHandler
     public static int deerMin;
     public static int deerMax;
     public static boolean deerReplaceCows;
+    
+    public static boolean dragonflyEnable;
+    public static int dragonflyWeight;
+    public static int dragonflyMin;
+    public static int dragonflyMax;
     
     public static boolean snailEnable;
     public static int snailWeight;
@@ -56,6 +62,11 @@ public class ConfigurationHandler
             deerMin = config.getInt("Min. Group Size", DEER_SETTINGS, 2, 0, Integer.MAX_VALUE, "The minimum group size for Deer.");
             deerMax = config.getInt("Max. Group Size", DEER_SETTINGS, 4, 0, Integer.MAX_VALUE, "The maximum group size for Deer.");
             deerReplaceCows = config.getBoolean("Replace Cows with Deer", DEER_SETTINGS, true, "Removes Cow spawns in biomes that Deer spawn in.");
+            
+            dragonflyEnable = config.getBoolean("Enable Dragonflies", DRAGONFLY_SETTINGS, true, "Enables Dragonflies.  Disabling this will remove existing Dragonflies from your world.");
+            dragonflyWeight = config.getInt("Spawn Weight", DRAGONFLY_SETTINGS, 1, 0, Integer.MAX_VALUE, "The spawn weight for Dragonflies.");
+            dragonflyMin = config.getInt("Min. Group Size", DRAGONFLY_SETTINGS, 1, 0, Integer.MAX_VALUE, "The minimum group size for Dragonflies.");
+            dragonflyMax = config.getInt("Max. Group Size", DRAGONFLY_SETTINGS, 3, 0, Integer.MAX_VALUE, "The maximum group size for Dragonflies.");
             
             snailEnable = config.getBoolean("Enable Snails", SNAIL_SETTINGS, true, "Enables Snails.  Disabling this will remove existing Snails from your world.");
             snailWeight = config.getInt("Spawn Weight", SNAIL_SETTINGS, 1, 0, Integer.MAX_VALUE, "The spawn weight for Snails.");

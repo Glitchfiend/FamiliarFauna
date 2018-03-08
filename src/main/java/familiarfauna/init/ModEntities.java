@@ -10,6 +10,7 @@ import familiarfauna.config.ConfigurationHandler;
 import familiarfauna.core.FamiliarFauna;
 import familiarfauna.entities.EntityButterfly;
 import familiarfauna.entities.EntityDeer;
+import familiarfauna.entities.EntityDragonfly;
 import familiarfauna.entities.EntitySnail;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList.EntityEggInfo;
@@ -52,6 +53,10 @@ public class ModEntities
             ModCompat.lavender_fields, ModCompat.meadow, ModCompat.mystic_grove, ModCompat.orchard, ModCompat.rainforest,
             ModCompat.sacred_springs, ModCompat.tropical_island};
     
+    public static Biome[] DRAGONFLY_BIOMES = new Biome[] {Biomes.SWAMPLAND, Biomes.MUTATED_SWAMPLAND,
+            ModCompat.bayou, ModCompat.bog, ModCompat.dead_swamp, ModCompat.land_of_lakes, ModCompat.lush_swamp,
+            ModCompat.marsh, ModCompat.temperate_rainforest, ModCompat.wetland};
+    
     public static Biome[] SNAIL_BIOMES = new Biome[] {Biomes.SWAMPLAND, Biomes.MUTATED_SWAMPLAND,
             ModCompat.bayou, ModCompat.bog, ModCompat.dead_swamp, ModCompat.fen, ModCompat.lush_swamp, ModCompat.marsh,
             ModCompat.moor, ModCompat.quagmire, ModCompat.wetland};
@@ -68,6 +73,9 @@ public class ModEntities
         
         //Butterfly
     	registerFFEntityWithSpawnEgg(EntityButterfly.class, "familiarfauna.butterfly", 80, 3, true, 0x282828, 0xEF6F1F, EnumCreatureType.AMBIENT, ConfigurationHandler.butterflyWeight, ConfigurationHandler.butterflyMin, ConfigurationHandler.butterflyMax, BUTTERFLY_BIOMES);
+    	
+        //Dragonfly
+    	registerFFEntityWithSpawnEgg(EntityDragonfly.class, "familiarfauna.dragonfly", 80, 3, true, 0x34406D, 0x51A1CC, EnumCreatureType.AMBIENT, ConfigurationHandler.dragonflyWeight, ConfigurationHandler.dragonflyMin, ConfigurationHandler.dragonflyMax, DRAGONFLY_BIOMES);
     	
     	//Snail
     	registerFFEntityWithSpawnEgg(EntitySnail.class, "familiarfauna.snail", 80, 3, true, 0xA694BC, 0xCDA26E, EnumCreatureType.AMBIENT, ConfigurationHandler.snailWeight, ConfigurationHandler.snailMin, ConfigurationHandler.snailMax, SNAIL_BIOMES);

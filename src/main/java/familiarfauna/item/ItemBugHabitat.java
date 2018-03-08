@@ -3,6 +3,7 @@ package familiarfauna.item;
 import javax.annotation.Nonnull;
 
 import familiarfauna.entities.EntityButterfly;
+import familiarfauna.entities.EntityDragonfly;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.IItemPropertyGetter;
@@ -34,6 +35,15 @@ public class ItemBugHabitat extends Item
                 if (stack.hasTagCompound() && stack.getTagCompound().hasKey("Bug"))
                 {
                     if (stack.getTagCompound().getString("Bug") == "butterfly")
+                    {
+                        if (stack.getTagCompound().hasKey("Type"))
+                        {
+                            return (stack.getTagCompound().getInteger("Type") + 1);
+                        }
+
+                        return 1;
+                    }
+                    if (stack.getTagCompound().getString("Bug") == "dragonfly")
                     {
                         if (stack.getTagCompound().hasKey("Type"))
                         {
@@ -136,6 +146,20 @@ public class ItemBugHabitat extends Item
                 }
                 
                 world.spawnEntity(butterfly);
+            }
+            
+            //Dragonfly
+            if (bugEntity == "dragonfly")
+            {
+                EntityDragonfly dragonfly = new EntityDragonfly(world);
+                dragonfly.setDragonflyType(bugType);
+                dragonfly.setLocationAndAngles(releasePoint.x, releasePoint.y, releasePoint.z, MathHelper.wrapDegrees(world.rand.nextFloat() * 360.0F), 0.0F);
+                if (bugName != "")
+                {
+                	dragonfly.setCustomNameTag(bugName);
+                }
+                
+                world.spawnEntity(dragonfly);
             }
 
             stack.getTagCompound().removeTag("Bug");

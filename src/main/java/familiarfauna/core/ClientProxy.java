@@ -2,9 +2,11 @@ package familiarfauna.core;
 
 import familiarfauna.entities.EntityButterfly;
 import familiarfauna.entities.EntityDeer;
+import familiarfauna.entities.EntityDragonfly;
 import familiarfauna.entities.EntitySnail;
 import familiarfauna.entities.render.RenderButterfly;
 import familiarfauna.entities.render.RenderDeer;
+import familiarfauna.entities.render.RenderDragonfly;
 import familiarfauna.entities.render.RenderSnail;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -24,6 +26,7 @@ public class ClientProxy extends CommonProxy
     public void registerRenderers()
     {
         registerEntityRenderer(EntityButterfly.class, RenderButterfly.class);
+        registerEntityRenderer(EntityDragonfly.class, RenderDragonfly.class);
         registerEntityRenderer(EntitySnail.class, RenderSnail.class);
         registerEntityRenderer(EntityDeer.class, RenderDeer.class);
     }
