@@ -162,7 +162,7 @@ public class EntityDragonfly extends EntityAmbientCreature implements EntityFlyi
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
     {
         livingdata = super.onInitialSpawn(difficulty, livingdata);
-        int i = this.rand.nextInt(5);
+        int i = this.rand.nextInt(4);
         boolean flag = false;
 
         if (livingdata instanceof EntityDragonfly.DragonflyTypeData)
@@ -442,19 +442,23 @@ public class EntityDragonfly extends EntityAmbientCreature implements EntityFlyi
         public void onUpdateMoveHelper()
         {
             // if we have arrived at the previous target, or we have no target to aim for, do nothing
-            if (this.action != Action.MOVE_TO) {return;}
+            if (this.action != Action.MOVE_TO)
+            {
+            	return;
+            }
             
-            if (this.courseChangeCooldown-- > 0) {
-                // limit the rate at which we change course
+            // limit the rate at which we change course
+            if (this.courseChangeCooldown-- > 0)
+            {
                 return;
             }
-            this.courseChangeCooldown += this.dragonfly.getRNG().nextInt(10) + 10;
+            this.courseChangeCooldown += this.dragonfly.getRNG().nextInt(2) + 2;
             
             // update the target position
             this.targetPos.refresh();
             
             // accelerate the dragonfly towards the target
-            double acceleration = 0.25D;
+            double acceleration = 0.1D;
             this.dragonfly.motionX += this.targetPos.aimX * acceleration;
             this.dragonfly.motionY += this.targetPos.aimY * acceleration;
             this.dragonfly.motionZ += this.targetPos.aimZ * acceleration;
@@ -463,13 +467,15 @@ public class EntityDragonfly extends EntityAmbientCreature implements EntityFlyi
             this.dragonfly.renderYawOffset = this.dragonfly.rotationYaw = -((float)Math.atan2(this.targetPos.distX, this.targetPos.distZ)) * 180.0F / (float)Math.PI;            
 
             // abandon this movement if we have reached the target or there is no longer a clear path to the target
-            if (!this.targetPos.isPathClear(2.0D))
+            if (!this.targetPos.isPathClear(1.0D))
             {
-                //System.out.println("Abandoning move target - way is blocked" );
                 this.action = Action.WAIT;
-            } else if (this.targetPos.dist < this.closeEnough) {
-                //System.out.println("Arrived (close enough) dist:"+this.targetPos.dist);
+                this.courseChangeCooldown += this.dragonfly.getRNG().nextInt(30) + 15;
+            }
+            else if (this.targetPos.dist < this.closeEnough)
+            {
                 this.action = Action.WAIT;
+                this.courseChangeCooldown += this.dragonfly.getRNG().nextInt(30) + 15;
             }
         }        
 
@@ -511,16 +517,15 @@ public class EntityDragonfly extends EntityAmbientCreature implements EntityFlyi
             Collections.shuffle(directions);
             for (EnumFacing facing : directions)
             {
-                if (this.tryGoingAlongAxis(rand, facing, 1.0D)) {return;}
+                if (this.tryGoingAlongAxis(rand, facing, 10.0D)) {return;}
             }
         }
         
         
-        // note y direction has a slight downward bias to stop them flying too high
         public boolean tryGoingRandomDirection(Random rand, double maxDistance)
         {
             double dirX = ((rand.nextDouble() * 2.0D - 1.0D) * maxDistance);
-            double dirY = ((rand.nextDouble() * 2.0D - 1.1D) * (maxDistance * 0.25D));
+            double dirY = ((rand.nextDouble() * 2.0D - 1.0D) * (maxDistance * 0.25D));
             double dirZ = ((rand.nextDouble() * 2.0D - 1.0D) * maxDistance);
             return this.tryGoing(dirX, dirY, dirZ);
         }
@@ -536,7 +541,7 @@ public class EntityDragonfly extends EntityAmbientCreature implements EntityFlyi
                     dirX = rand.nextDouble() * facing.getAxisDirection().getOffset() * maxDistance;
                     break;
                 case Y:
-                    dirY = rand.nextDouble() * facing.getAxisDirection().getOffset() * maxDistance;
+                    dirY = rand.nextDouble() * facing.getAxisDirection().getOffset() * (maxDistance * 0.25D);
                     break;
                 case Z: default:
                     dirZ = rand.nextDouble() * facing.getAxisDirection().getOffset() * maxDistance;

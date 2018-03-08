@@ -12,6 +12,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class RenderDragonfly extends RenderLiving<EntityDragonfly>
 {
     private static final ResourceLocation BLUE = new ResourceLocation("familiarfauna:textures/entity/dragonfly/blue.png");
+    private static final ResourceLocation RED = new ResourceLocation("familiarfauna:textures/entity/dragonfly/red.png");
+    private static final ResourceLocation GREEN = new ResourceLocation("familiarfauna:textures/entity/dragonfly/green.png");
+    private static final ResourceLocation BANDED = new ResourceLocation("familiarfauna:textures/entity/dragonfly/banded.png");
     
     public RenderDragonfly(RenderManager renderManager)
     {
@@ -27,6 +30,12 @@ public class RenderDragonfly extends RenderLiving<EntityDragonfly>
             case 0:
             default:
                 return BLUE;
+            case 1:
+                return RED;
+            case 2:
+                return GREEN;
+            case 3:
+                return BANDED;
         }
     }
 

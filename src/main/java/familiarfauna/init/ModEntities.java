@@ -54,8 +54,8 @@ public class ModEntities
             ModCompat.sacred_springs, ModCompat.tropical_island};
     
     public static Biome[] DRAGONFLY_BIOMES = new Biome[] {Biomes.SWAMPLAND, Biomes.MUTATED_SWAMPLAND,
-            ModCompat.bayou, ModCompat.bog, ModCompat.dead_swamp, ModCompat.land_of_lakes, ModCompat.lush_swamp,
-            ModCompat.marsh, ModCompat.temperate_rainforest, ModCompat.wetland};
+            ModCompat.bayou, ModCompat.bog, ModCompat.dead_swamp, ModCompat.fen, ModCompat.land_of_lakes,
+            ModCompat.lush_swamp, ModCompat.marsh, ModCompat.shield, ModCompat.temperate_rainforest, ModCompat.wetland};
     
     public static Biome[] SNAIL_BIOMES = new Biome[] {Biomes.SWAMPLAND, Biomes.MUTATED_SWAMPLAND,
             ModCompat.bayou, ModCompat.bog, ModCompat.dead_swamp, ModCompat.fen, ModCompat.lush_swamp, ModCompat.marsh,

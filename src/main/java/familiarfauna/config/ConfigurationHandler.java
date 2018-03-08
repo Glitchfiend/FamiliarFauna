@@ -66,7 +66,7 @@ public class ConfigurationHandler
             dragonflyEnable = config.getBoolean("Enable Dragonflies", DRAGONFLY_SETTINGS, true, "Enables Dragonflies.  Disabling this will remove existing Dragonflies from your world.");
             dragonflyWeight = config.getInt("Spawn Weight", DRAGONFLY_SETTINGS, 1, 0, Integer.MAX_VALUE, "The spawn weight for Dragonflies.");
             dragonflyMin = config.getInt("Min. Group Size", DRAGONFLY_SETTINGS, 1, 0, Integer.MAX_VALUE, "The minimum group size for Dragonflies.");
-            dragonflyMax = config.getInt("Max. Group Size", DRAGONFLY_SETTINGS, 3, 0, Integer.MAX_VALUE, "The maximum group size for Dragonflies.");
+            dragonflyMax = config.getInt("Max. Group Size", DRAGONFLY_SETTINGS, 2, 0, Integer.MAX_VALUE, "The maximum group size for Dragonflies.");
             
             snailEnable = config.getBoolean("Enable Snails", SNAIL_SETTINGS, true, "Enables Snails.  Disabling this will remove existing Snails from your world.");
             snailWeight = config.getInt("Spawn Weight", SNAIL_SETTINGS, 1, 0, Integer.MAX_VALUE, "The spawn weight for Snails.");
