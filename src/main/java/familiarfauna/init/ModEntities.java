@@ -34,6 +34,13 @@ public class ModEntities
 
     private static int nextFFEntityId = 1;
     
+    public static Biome[] BUTTERFLY_BIOMES = new Biome[] {Biomes.PLAINS, Biomes.MUTATED_PLAINS, Biomes.FOREST,
+            Biomes.FOREST_HILLS, Biomes.MUTATED_FOREST, Biomes.JUNGLE, Biomes.JUNGLE_EDGE, Biomes.JUNGLE_HILLS,
+            Biomes.MUTATED_JUNGLE, Biomes.MUTATED_JUNGLE_EDGE, ModCompat.cherry_blossom_grove, ModCompat.eucalyptus_forest,
+            ModCompat.flower_field, ModCompat.flower_island, ModCompat.grassland, ModCompat.grove,
+            ModCompat.lavender_fields, ModCompat.meadow, ModCompat.mystic_grove, ModCompat.orchard, ModCompat.rainforest,
+            ModCompat.sacred_springs, ModCompat.tropical_island};
+    
     public static Biome[] DEER_BIOMES = new Biome[] {Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS,
             Biomes.MUTATED_BIRCH_FOREST, Biomes.MUTATED_BIRCH_FOREST_HILLS, Biomes.FOREST, Biomes.FOREST_HILLS,
             Biomes.MUTATED_FOREST, Biomes.TAIGA, Biomes.TAIGA_HILLS, Biomes.REDWOOD_TAIGA, Biomes.REDWOOD_TAIGA_HILLS,
@@ -46,13 +53,6 @@ public class ModEntities
             ModCompat.seasonal_forest, ModCompat.shield, ModCompat.snowy_coniferous_forest, ModCompat.snowy_forest,
             ModCompat.temperate_rainforest, ModCompat.woodland};
     
-    public static Biome[] BUTTERFLY_BIOMES = new Biome[] {Biomes.PLAINS, Biomes.MUTATED_PLAINS, Biomes.FOREST,
-            Biomes.FOREST_HILLS, Biomes.MUTATED_FOREST, Biomes.JUNGLE, Biomes.JUNGLE_EDGE, Biomes.JUNGLE_HILLS,
-            Biomes.MUTATED_JUNGLE, Biomes.MUTATED_JUNGLE_EDGE, ModCompat.cherry_blossom_grove, ModCompat.eucalyptus_forest,
-            ModCompat.flower_field, ModCompat.flower_island, ModCompat.grassland, ModCompat.grove,
-            ModCompat.lavender_fields, ModCompat.meadow, ModCompat.mystic_grove, ModCompat.orchard, ModCompat.rainforest,
-            ModCompat.sacred_springs, ModCompat.tropical_island};
-    
     public static Biome[] DRAGONFLY_BIOMES = new Biome[] {Biomes.SWAMPLAND, Biomes.MUTATED_SWAMPLAND,
             ModCompat.bayou, ModCompat.bog, ModCompat.dead_swamp, ModCompat.fen, ModCompat.land_of_lakes,
             ModCompat.lush_swamp, ModCompat.marsh, ModCompat.shield, ModCompat.temperate_rainforest, ModCompat.wetland};
@@ -63,6 +63,9 @@ public class ModEntities
     
     public static void init()
     {
+        //Butterfly
+    	registerFFEntityWithSpawnEgg(EntityButterfly.class, "familiarfauna.butterfly", 80, 3, true, 0x282828, 0xEF6F1F, EnumCreatureType.AMBIENT, ConfigurationHandler.butterflyWeight, ConfigurationHandler.butterflyMin, ConfigurationHandler.butterflyMax, BUTTERFLY_BIOMES);
+    	
         //Deer
         //Remove cows from the biomes deer spawn in
     	if (ConfigurationHandler.deerReplaceCows)
@@ -71,8 +74,6 @@ public class ModEntities
 		}
         registerFFEntityWithSpawnEgg(EntityDeer.class, "familiarfauna.deer", 80, 3, true, 0x765134, 0xF7EFE6, EnumCreatureType.CREATURE, ConfigurationHandler.deerWeight, ConfigurationHandler.deerMin, ConfigurationHandler.deerMax, DEER_BIOMES);
         
-        //Butterfly
-    	registerFFEntityWithSpawnEgg(EntityButterfly.class, "familiarfauna.butterfly", 80, 3, true, 0x282828, 0xEF6F1F, EnumCreatureType.AMBIENT, ConfigurationHandler.butterflyWeight, ConfigurationHandler.butterflyMin, ConfigurationHandler.butterflyMax, BUTTERFLY_BIOMES);
     	
         //Dragonfly
     	registerFFEntityWithSpawnEgg(EntityDragonfly.class, "familiarfauna.dragonfly", 80, 3, true, 0x34406D, 0x51A1CC, EnumCreatureType.AMBIENT, ConfigurationHandler.dragonflyWeight, ConfigurationHandler.dragonflyMin, ConfigurationHandler.dragonflyMax, DRAGONFLY_BIOMES);
