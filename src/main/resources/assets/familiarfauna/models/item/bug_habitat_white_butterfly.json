@@ -1,6 +1,0 @@
-{
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "familiarfauna:items/bug_habitat_white_butterfly"
-    }
-}

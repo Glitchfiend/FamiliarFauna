@@ -1,10 +1,9 @@
 [{
-    "modid": "familiarfauna",
-    "name": "Familiar Fauna",
-    "description": "Adds new, realistic mobs to enhance Minecraft!",
+    "modid": "forstridesfunpack",
+    "name": "Forstride's Funpack",
+    "description": "Adds random blocks and items",
     "version": "${mod_version}",
     "mcversion": "${minecraft_version}",
-	"url": "https://minecraft.curseforge.com/projects/familiar-fauna",
     "authorList": ["Forstride"],
-    "logoFile": "assets/familiarfauna/textures/gui/logo.png"
+    "logoFile": "assets/forstridesfunpack/textures/gui/logo.png"
 }]

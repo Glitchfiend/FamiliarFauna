@@ -22,9 +22,9 @@ configFile.withReader {
     project.ext.config = new ConfigSlurper().parse prop
 }
 
-group = "com.github.glitchfiend.familiarfauna"
+group = "com.github.forstride.forstridesfunpack"
 version = config.mod_version
-archivesBaseName = "FamiliarFauna"
+archivesBaseName = "ForstridesFunpack"
 
 // add some stuff to the version
 version = "${config.minecraft_version}-${config.mod_version}.${System.getenv().BUILD_NUMBER}"
@@ -41,7 +41,7 @@ minecraft {
     def buildnum = (config.build_number!="") ? '.' + config.build_number : ""
     replace '@MOD_VERSION@', config.mod_version + buildnum
     replace '1.0.0.0', config.forge_version
-    replaceIn 'FamiliarFauna.java'
+    replaceIn 'ForstridesFunpack.java'
 }
 
 processResources {
