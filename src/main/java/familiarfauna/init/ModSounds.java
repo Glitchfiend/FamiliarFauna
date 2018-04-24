@@ -18,6 +18,10 @@ public class ModSounds
         dragonfly_ambient = registerSound("entity.familiarfauna.dragonfly.ambient");
         pixie_ambient = registerSound("entity.familiarfauna.pixie.ambient");
         pixie_hurt = registerSound("entity.familiarfauna.pixie.hurt");
+        turkey_ambient = registerSound("entity.familiarfauna.turkey.ambient");
+        turkey_hurt = registerSound("entity.familiarfauna.turkey.hurt");
+        turkey_dead = registerSound("entity.familiarfauna.turkey.dead");
+        turkey_step = SoundEvents.ENTITY_CHICKEN_STEP;
     }
     
     private static SoundEvent registerSound(String soundName)

@@ -11,6 +11,7 @@ public class ModLootTable
     public static ResourceLocation DEER_LOOT;
     public static ResourceLocation PIXIE_LOOT;
     public static ResourceLocation SNAIL_LOOT;
+    public static ResourceLocation TURKEY_LOOT;
     
     public static void init()
     {
@@ -19,5 +20,6 @@ public class ModLootTable
         DEER_LOOT = LootTableList.register(new ResourceLocation(FamiliarFauna.MOD_ID, "entities/deer"));
         PIXIE_LOOT = LootTableList.register(new ResourceLocation(FamiliarFauna.MOD_ID, "entities/pixie"));
         SNAIL_LOOT = LootTableList.register(new ResourceLocation(FamiliarFauna.MOD_ID, "entities/snail"));
+        TURKEY_LOOT = LootTableList.register(new ResourceLocation(FamiliarFauna.MOD_ID, "entities/turkey"));
     }
 }

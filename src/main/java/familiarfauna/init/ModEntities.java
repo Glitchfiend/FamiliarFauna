@@ -13,10 +13,12 @@ import familiarfauna.entities.EntityDeer;
 import familiarfauna.entities.EntityDragonfly;
 import familiarfauna.entities.EntityPixie;
 import familiarfauna.entities.EntitySnail;
+import familiarfauna.entities.EntityTurkey;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList.EntityEggInfo;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
@@ -54,6 +56,17 @@ public class ModEntities
             ModCompat.seasonal_forest, ModCompat.shield, ModCompat.snowy_coniferous_forest, ModCompat.snowy_forest,
             ModCompat.temperate_rainforest, ModCompat.woodland};
     
+    public static Biome[] TURKEY_BIOMES = new Biome[] {Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS,
+            Biomes.MUTATED_BIRCH_FOREST, Biomes.MUTATED_BIRCH_FOREST_HILLS, Biomes.FOREST, Biomes.FOREST_HILLS,
+            Biomes.MUTATED_FOREST, Biomes.TAIGA, Biomes.TAIGA_HILLS, Biomes.REDWOOD_TAIGA, Biomes.REDWOOD_TAIGA_HILLS,
+            Biomes.MUTATED_REDWOOD_TAIGA, Biomes.MUTATED_REDWOOD_TAIGA_HILLS, Biomes.MUTATED_TAIGA,
+            Biomes.EXTREME_HILLS, Biomes.EXTREME_HILLS_EDGE, Biomes.EXTREME_HILLS_WITH_TREES,
+            Biomes.MUTATED_EXTREME_HILLS, Biomes.MUTATED_EXTREME_HILLS_WITH_TREES, Biomes.ROOFED_FOREST,
+            Biomes.MUTATED_ROOFED_FOREST, Biomes.COLD_TAIGA, Biomes.COLD_TAIGA_HILLS, Biomes.MUTATED_TAIGA_COLD,
+            ModCompat.boreal_forest, ModCompat.coniferous_forest, ModCompat.dead_forest, ModCompat.grove, ModCompat.maple_woods,
+            ModCompat.mountain_foothills, ModCompat.mystic_grove, ModCompat.redwood_forest, ModCompat.seasonal_forest, ModCompat.shield,
+            ModCompat.snowy_coniferous_forest, ModCompat.snowy_forest, ModCompat.temperate_rainforest, ModCompat.woodland};
+    
     public static Biome[] DRAGONFLY_BIOMES = new Biome[] {Biomes.SWAMPLAND, Biomes.MUTATED_SWAMPLAND,
             ModCompat.bayou, ModCompat.bog, ModCompat.dead_swamp, ModCompat.fen, ModCompat.land_of_lakes,
             ModCompat.lush_swamp, ModCompat.marsh, ModCompat.shield, ModCompat.temperate_rainforest, ModCompat.wetland};
@@ -76,7 +89,6 @@ public class ModEntities
 			removeSpawn(EntityCow.class, EnumCreatureType.CREATURE, DEER_BIOMES);
 		}
         registerFFEntityWithSpawnEgg(EntityDeer.class, "familiarfauna.deer", 80, 3, true, 0x765134, 0xF7EFE6, EnumCreatureType.CREATURE, ConfigurationHandler.deerWeight, ConfigurationHandler.deerMin, ConfigurationHandler.deerMax, DEER_BIOMES);
-        
     	
         //Dragonfly
     	registerFFEntityWithSpawnEgg(EntityDragonfly.class, "familiarfauna.dragonfly", 80, 3, true, 0x34406D, 0x51A1CC, EnumCreatureType.AMBIENT, ConfigurationHandler.dragonflyWeight, ConfigurationHandler.dragonflyMin, ConfigurationHandler.dragonflyMax, DRAGONFLY_BIOMES);
@@ -86,6 +98,14 @@ public class ModEntities
     	
     	//Snail
     	registerFFEntityWithSpawnEgg(EntitySnail.class, "familiarfauna.snail", 80, 3, true, 0xA694BC, 0xCDA26E, EnumCreatureType.AMBIENT, ConfigurationHandler.snailWeight, ConfigurationHandler.snailMin, ConfigurationHandler.snailMax, SNAIL_BIOMES);
+    	
+    	//Turkey
+        //Remove chickens from the biomes turkey spawn in
+    	if (ConfigurationHandler.turkeyReplaceChickens)
+		{
+			removeSpawn(EntityChicken.class, EnumCreatureType.CREATURE, TURKEY_BIOMES);
+		}
+        registerFFEntityWithSpawnEgg(EntityTurkey.class, "familiarfauna.turkey", 80, 3, true, 0x6B492E, 0xE23131, EnumCreatureType.CREATURE, ConfigurationHandler.turkeyWeight, ConfigurationHandler.turkeyMin, ConfigurationHandler.turkeyMax, TURKEY_BIOMES);
     }
     
     // register an entity

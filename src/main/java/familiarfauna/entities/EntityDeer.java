@@ -46,7 +46,7 @@ public class EntityDeer extends EntityAnimal implements IAnimals
     public EntityDeer(World worldIn)
     {
         super(worldIn);
-        this.setSize(1.0F, 1.2F);
+        this.setSize(1.0F, 1.6F);
     }
     
     @Override

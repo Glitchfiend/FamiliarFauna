@@ -18,6 +18,7 @@ public class ConfigurationHandler
     public static final String DRAGONFLY_SETTINGS = "Dragonfly Settings";
     public static final String PIXIE_SETTINGS = "Pixie Settings";
     public static final String SNAIL_SETTINGS = "Snail Settings";
+    public static final String TURKEY_SETTINGS = "Turkey Settings";
     
     public static boolean butterflyEnable;
     public static int butterflyWeight;
@@ -44,6 +45,12 @@ public class ConfigurationHandler
     public static int snailWeight;
     public static int snailMin;
     public static int snailMax;
+    
+    public static boolean turkeyEnable;
+    public static int turkeyWeight;
+    public static int turkeyMin;
+    public static int turkeyMax;
+    public static boolean turkeyReplaceChickens;
 
     public static void init(File configFile)
     {
@@ -83,6 +90,12 @@ public class ConfigurationHandler
             snailWeight = config.getInt("Spawn Weight", SNAIL_SETTINGS, 1, 0, Integer.MAX_VALUE, "The spawn weight for Snails.");
             snailMin = config.getInt("Min. Group Size", SNAIL_SETTINGS, 1, 0, Integer.MAX_VALUE, "The minimum group size for Snails.");
             snailMax = config.getInt("Max. Group Size", SNAIL_SETTINGS, 1, 0, Integer.MAX_VALUE, "The maximum group size for Snails.");
+            
+            turkeyEnable = config.getBoolean("Enable Turkey", DEER_SETTINGS, true, "Enables Turkey.  Disabling this will remove existing Turkey from your world.");
+            turkeyWeight = config.getInt("Spawn Weight", DEER_SETTINGS, 10, 0, Integer.MAX_VALUE, "The spawn weight for Turkey.");
+            turkeyMin = config.getInt("Min. Group Size", DEER_SETTINGS, 3, 0, Integer.MAX_VALUE, "The minimum group size for Turkey.");
+            turkeyMax = config.getInt("Max. Group Size", DEER_SETTINGS, 4, 0, Integer.MAX_VALUE, "The maximum group size for Turkey.");
+            turkeyReplaceChickens = config.getBoolean("Replace Chickens with Turkey", DEER_SETTINGS, true, "Removes Chicken spawns in biomes that Turkey spawn in.");
         }
         catch (Exception e)
         {

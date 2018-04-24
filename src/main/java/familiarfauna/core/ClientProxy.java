@@ -5,11 +5,13 @@ import familiarfauna.entities.EntityDeer;
 import familiarfauna.entities.EntityDragonfly;
 import familiarfauna.entities.EntityPixie;
 import familiarfauna.entities.EntitySnail;
+import familiarfauna.entities.EntityTurkey;
 import familiarfauna.entities.render.RenderButterfly;
 import familiarfauna.entities.render.RenderDeer;
 import familiarfauna.entities.render.RenderDragonfly;
 import familiarfauna.entities.render.RenderPixie;
 import familiarfauna.entities.render.RenderSnail;
+import familiarfauna.entities.render.RenderTurkey;
 import familiarfauna.particle.EntityBluePixieTrailFX;
 import familiarfauna.particle.EntityPinkPixieTrailFX;
 import familiarfauna.particle.EntityPurplePixieTrailFX;
@@ -42,6 +44,7 @@ public class ClientProxy extends CommonProxy
         registerEntityRenderer(EntityPixie.class, RenderPixie.class);
         registerEntityRenderer(EntitySnail.class, RenderSnail.class);
         registerEntityRenderer(EntityDeer.class, RenderDeer.class);
+        registerEntityRenderer(EntityTurkey.class, RenderTurkey.class);
     }
     
     @Override
