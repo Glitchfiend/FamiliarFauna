@@ -91,11 +91,11 @@ public class ConfigurationHandler
             snailMin = config.getInt("Min. Group Size", SNAIL_SETTINGS, 1, 0, Integer.MAX_VALUE, "The minimum group size for Snails.");
             snailMax = config.getInt("Max. Group Size", SNAIL_SETTINGS, 1, 0, Integer.MAX_VALUE, "The maximum group size for Snails.");
             
-            turkeyEnable = config.getBoolean("Enable Turkey", DEER_SETTINGS, true, "Enables Turkey.  Disabling this will remove existing Turkey from your world.");
-            turkeyWeight = config.getInt("Spawn Weight", DEER_SETTINGS, 10, 0, Integer.MAX_VALUE, "The spawn weight for Turkey.");
-            turkeyMin = config.getInt("Min. Group Size", DEER_SETTINGS, 3, 0, Integer.MAX_VALUE, "The minimum group size for Turkey.");
-            turkeyMax = config.getInt("Max. Group Size", DEER_SETTINGS, 4, 0, Integer.MAX_VALUE, "The maximum group size for Turkey.");
-            turkeyReplaceChickens = config.getBoolean("Replace Chickens with Turkey", DEER_SETTINGS, true, "Removes Chicken spawns in biomes that Turkey spawn in.");
+            turkeyEnable = config.getBoolean("Enable Turkey", TURKEY_SETTINGS, true, "Enables Turkey.  Disabling this will remove existing Turkey from your world.");
+            turkeyWeight = config.getInt("Spawn Weight", TURKEY_SETTINGS, 10, 0, Integer.MAX_VALUE, "The spawn weight for Turkey.");
+            turkeyMin = config.getInt("Min. Group Size", TURKEY_SETTINGS, 3, 0, Integer.MAX_VALUE, "The minimum group size for Turkey.");
+            turkeyMax = config.getInt("Max. Group Size", TURKEY_SETTINGS, 4, 0, Integer.MAX_VALUE, "The maximum group size for Turkey.");
+            turkeyReplaceChickens = config.getBoolean("Replace Chickens with Turkey", TURKEY_SETTINGS, true, "Removes Chicken spawns in biomes that Turkey spawn in.");
         }
         catch (Exception e)
         {
