@@ -231,7 +231,7 @@ public class EntityPixie extends EntityAmbientCreature implements EntityFlying
         
         if (this.world.isRemote)
         {
-            if (world.rand.nextInt(6) == 0)
+            if (world.rand.nextInt(4) == 0)
             {
             	FFParticleTypes particle = FFParticleTypes.PINK_PIXIE_TRAIL;
             	

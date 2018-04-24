@@ -35,15 +35,15 @@ public class ItemBugHabitat extends Item
             {
                 if (stack.hasTagCompound() && stack.getTagCompound().hasKey("Bug"))
                 {
-                    if (stack.getTagCompound().getString("Bug") == "butterfly")
+                    if (stack.getTagCompound().getString("Bug").equals("butterfly"))
                     {
                         return 1;
                     }
-                    if (stack.getTagCompound().getString("Bug") == "dragonfly")
+                    if (stack.getTagCompound().getString("Bug").equals("dragonfly"))
                     {
                         return 2;
                     }
-                    if (stack.getTagCompound().getString("Bug") == "pixie")
+                    if (stack.getTagCompound().getString("Bug").equals("pixie"))
                     {
                         return 3;
                     }
@@ -61,7 +61,7 @@ public class ItemBugHabitat extends Item
             {
                 if (stack.hasTagCompound() && stack.getTagCompound().hasKey("Bug"))
                 {
-                    if (stack.getTagCompound().getString("Bug") == "butterfly")
+                    if (stack.getTagCompound().getString("Bug").equals("butterfly"))
                     {
                         if (stack.getTagCompound().hasKey("Type"))
                         {
@@ -70,7 +70,7 @@ public class ItemBugHabitat extends Item
 
                         return 1;
                     }
-                    if (stack.getTagCompound().getString("Bug") == "dragonfly")
+                    if (stack.getTagCompound().getString("Bug").equals("dragonfly"))
                     {
                         if (stack.getTagCompound().hasKey("Type"))
                         {
@@ -79,7 +79,7 @@ public class ItemBugHabitat extends Item
 
                         return 1;
                     }
-                    if (stack.getTagCompound().getString("Bug") == "pixie")
+                    if (stack.getTagCompound().getString("Bug").equals("pixie"))
                     {
                         if (stack.getTagCompound().hasKey("Type"))
                         {
@@ -171,7 +171,7 @@ public class ItemBugHabitat extends Item
             }
             
             //Butterfly
-            if (bugEntity == "butterfly")
+            if (bugEntity.equals("butterfly"))
             {
                 EntityButterfly butterfly = new EntityButterfly(world);
                 butterfly.setButterflyType(bugType);
@@ -185,7 +185,7 @@ public class ItemBugHabitat extends Item
             }
             
             //Dragonfly
-            if (bugEntity == "dragonfly")
+            if (bugEntity.equals("dragonfly"))
             {
                 EntityDragonfly dragonfly = new EntityDragonfly(world);
                 dragonfly.setDragonflyType(bugType);
@@ -199,7 +199,7 @@ public class ItemBugHabitat extends Item
             }
             
             //Pixie
-            if (bugEntity == "pixie")
+            if (bugEntity.equals("pixie"))
             {
                 EntityPixie pixie = new EntityPixie(world);
                 pixie.setPixieType(bugType);
