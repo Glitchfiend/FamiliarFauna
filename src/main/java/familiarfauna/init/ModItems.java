@@ -43,8 +43,8 @@ public class ModItems
         snail_shell = registerItem(new Item(), "snail_shell");
         
         //Turkey
-        turkey_leg_raw = registerItem((new ItemFood(2, 0.3F, true)).setPotionEffect(new PotionEffect(MobEffects.HUNGER, 600, 0), 0.3F), "turkey_leg_raw");
-        turkey_leg_cooked = registerItem(new ItemFood(6, 0.6F, true), "turkey_leg_cooked");
+        turkey_leg_raw = registerItem((new ItemFood(1, 0.25F, true)).setPotionEffect(new PotionEffect(MobEffects.HUNGER, 600, 0), 0.3F), "turkey_leg_raw");
+        turkey_leg_cooked = registerItem(new ItemFood(5, 0.5F, true), "turkey_leg_cooked");
         
         //Venison
         venison_raw = registerItem(new ItemFood(3, 0.3F, true), "venison_raw");
