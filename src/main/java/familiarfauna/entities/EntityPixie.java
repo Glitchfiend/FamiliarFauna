@@ -189,14 +189,14 @@ public class EntityPixie extends EntityAmbientCreature implements EntityFlying
         int i = this.rand.nextInt(3);
         boolean flag = false;
 
-        if (livingdata instanceof EntityButterfly.ButterflyTypeData)
+        if (livingdata instanceof EntityPixie.PixieTypeData)
         {
-            i = ((EntityButterfly.ButterflyTypeData)livingdata).typeData;
+            i = ((EntityPixie.PixieTypeData)livingdata).typeData;
             flag = true;
         }
         else
         {
-            livingdata = new EntityButterfly.ButterflyTypeData(i);
+            livingdata = new EntityPixie.PixieTypeData(i);
         }
 
         this.setPixieType(i);
