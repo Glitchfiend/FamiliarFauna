@@ -9,6 +9,7 @@ public class ModLootTable
 	public static ResourceLocation BUTTERFLY_LOOT;
 	public static ResourceLocation DRAGONFLY_LOOT;
     public static ResourceLocation DEER_LOOT;
+    public static ResourceLocation PIXIE_LOOT;
     public static ResourceLocation SNAIL_LOOT;
     
     public static void init()
@@ -16,6 +17,7 @@ public class ModLootTable
         BUTTERFLY_LOOT = LootTableList.register(new ResourceLocation(FamiliarFauna.MOD_ID, "entities/butterfly"));
         DRAGONFLY_LOOT = LootTableList.register(new ResourceLocation(FamiliarFauna.MOD_ID, "entities/dragonfly"));
         DEER_LOOT = LootTableList.register(new ResourceLocation(FamiliarFauna.MOD_ID, "entities/deer"));
+        PIXIE_LOOT = LootTableList.register(new ResourceLocation(FamiliarFauna.MOD_ID, "entities/pixie"));
         SNAIL_LOOT = LootTableList.register(new ResourceLocation(FamiliarFauna.MOD_ID, "entities/snail"));
     }
 }

@@ -62,6 +62,7 @@ public class ModCompat
     // edge-biomes, sub-biomes and mutated-biomes
     public static Biome alps_foothills = null;
     public static Biome mountain_foothills = null;
+    public static Biome pasture = null;
     public static Biome glacier = null;
     public static Biome oasis = null;
     public static Biome coral_reef = null;
@@ -72,12 +73,12 @@ public class ModCompat
     public static Biome flower_island = null;
     public static Biome gravel_beach = null;
     public static Biome white_beach = null;
+    public static Biome origin_beach = null;
 
     // nether biomes
     public static Biome corrupted_sands = null;
     public static Biome fungi_forest = null;
     public static Biome phantasmagoric_inferno = null;
-    public static Biome polar_chasm = null;
     public static Biome undergarden = null;
     public static Biome visceral_heap = null;
     
@@ -138,6 +139,7 @@ public class ModCompat
         
         alps_foothills = ForgeRegistries.BIOMES.getValue(new ResourceLocation("biomesoplenty:alps_foothills"));
         mountain_foothills = ForgeRegistries.BIOMES.getValue(new ResourceLocation("biomesoplenty:mountain_foothills"));
+        pasture = ForgeRegistries.BIOMES.getValue(new ResourceLocation("biomesoplenty:pasture"));
         glacier = ForgeRegistries.BIOMES.getValue(new ResourceLocation("biomesoplenty:glacier"));
         oasis = ForgeRegistries.BIOMES.getValue(new ResourceLocation("biomesoplenty:oasis"));
         coral_reef = ForgeRegistries.BIOMES.getValue(new ResourceLocation("biomesoplenty:coral_reef"));
@@ -148,11 +150,11 @@ public class ModCompat
         flower_island = ForgeRegistries.BIOMES.getValue(new ResourceLocation("biomesoplenty:flower_island"));
         gravel_beach = ForgeRegistries.BIOMES.getValue(new ResourceLocation("biomesoplenty:gravel_beach"));
         white_beach = ForgeRegistries.BIOMES.getValue(new ResourceLocation("biomesoplenty:white_beach"));
+        origin_beach = ForgeRegistries.BIOMES.getValue(new ResourceLocation("biomesoplenty:origin_beach"));
         
         corrupted_sands = ForgeRegistries.BIOMES.getValue(new ResourceLocation("biomesoplenty:corrupted_sands"));
         fungi_forest = ForgeRegistries.BIOMES.getValue(new ResourceLocation("biomesoplenty:fungi_forest"));
         phantasmagoric_inferno = ForgeRegistries.BIOMES.getValue(new ResourceLocation("biomesoplenty:phantasmagoric_inferno"));
-        polar_chasm = ForgeRegistries.BIOMES.getValue(new ResourceLocation("biomesoplenty:polar_chasm"));
         undergarden = ForgeRegistries.BIOMES.getValue(new ResourceLocation("biomesoplenty:undergarden"));
         visceral_heap = ForgeRegistries.BIOMES.getValue(new ResourceLocation("biomesoplenty:visceral_heap"));
     }

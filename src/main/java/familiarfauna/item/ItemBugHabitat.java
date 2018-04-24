@@ -4,6 +4,7 @@ import javax.annotation.Nonnull;
 
 import familiarfauna.entities.EntityButterfly;
 import familiarfauna.entities.EntityDragonfly;
+import familiarfauna.entities.EntityPixie;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.IItemPropertyGetter;
@@ -26,6 +27,32 @@ public class ItemBugHabitat extends Item
 {
     public ItemBugHabitat()
     {
+        this.addPropertyOverride(new ResourceLocation("bug"), new IItemPropertyGetter()
+        {
+            @Override
+            @SideOnly(Side.CLIENT)
+            public float apply(@Nonnull ItemStack stack, World world, EntityLivingBase entity)
+            {
+                if (stack.hasTagCompound() && stack.getTagCompound().hasKey("Bug"))
+                {
+                    if (stack.getTagCompound().getString("Bug") == "butterfly")
+                    {
+                        return 1;
+                    }
+                    if (stack.getTagCompound().getString("Bug") == "dragonfly")
+                    {
+                        return 2;
+                    }
+                    if (stack.getTagCompound().getString("Bug") == "pixie")
+                    {
+                        return 3;
+                    }
+                }
+                
+                return 0;
+            }  
+        });
+        
         this.addPropertyOverride(new ResourceLocation("variant"), new IItemPropertyGetter()
         {
             @Override
@@ -44,6 +71,15 @@ public class ItemBugHabitat extends Item
                         return 1;
                     }
                     if (stack.getTagCompound().getString("Bug") == "dragonfly")
+                    {
+                        if (stack.getTagCompound().hasKey("Type"))
+                        {
+                            return (stack.getTagCompound().getInteger("Type") + 1);
+                        }
+
+                        return 1;
+                    }
+                    if (stack.getTagCompound().getString("Bug") == "pixie")
                     {
                         if (stack.getTagCompound().hasKey("Type"))
                         {
@@ -160,6 +196,20 @@ public class ItemBugHabitat extends Item
                 }
                 
                 world.spawnEntity(dragonfly);
+            }
+            
+            //Pixie
+            if (bugEntity == "pixie")
+            {
+                EntityPixie pixie = new EntityPixie(world);
+                pixie.setPixieType(bugType);
+                pixie.setLocationAndAngles(releasePoint.x, releasePoint.y, releasePoint.z, MathHelper.wrapDegrees(world.rand.nextFloat() * 360.0F), 0.0F);
+                if (bugName != "")
+                {
+                	pixie.setCustomNameTag(bugName);
+                }
+                
+                world.spawnEntity(pixie);
             }
 
             stack.getTagCompound().removeTag("Bug");

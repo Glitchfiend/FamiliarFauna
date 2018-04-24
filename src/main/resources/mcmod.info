@@ -1,7 +1,7 @@
 [{
     "modid": "familiarfauna",
     "name": "Familiar Fauna",
-    "description": "Adds new, realistic mobs to enhance Minecraft!",
+    "description": "Adds new mobs to enhance Minecraft!",
     "version": "${mod_version}",
     "mcversion": "${minecraft_version}",
 	"url": "https://minecraft.curseforge.com/projects/familiar-fauna",

@@ -16,6 +16,7 @@ public class ConfigurationHandler
     public static final String BUTTERFLY_SETTINGS = "Butterfly Settings";
     public static final String DEER_SETTINGS = "Deer Settings";
     public static final String DRAGONFLY_SETTINGS = "Dragonfly Settings";
+    public static final String PIXIE_SETTINGS = "Pixie Settings";
     public static final String SNAIL_SETTINGS = "Snail Settings";
     
     public static boolean butterflyEnable;
@@ -33,6 +34,11 @@ public class ConfigurationHandler
     public static int dragonflyWeight;
     public static int dragonflyMin;
     public static int dragonflyMax;
+    
+    public static boolean pixieEnable;
+    public static int pixieWeight;
+    public static int pixieMin;
+    public static int pixieMax;
     
     public static boolean snailEnable;
     public static int snailWeight;
@@ -67,6 +73,11 @@ public class ConfigurationHandler
             dragonflyWeight = config.getInt("Spawn Weight", DRAGONFLY_SETTINGS, 1, 0, Integer.MAX_VALUE, "The spawn weight for Dragonflies.");
             dragonflyMin = config.getInt("Min. Group Size", DRAGONFLY_SETTINGS, 1, 0, Integer.MAX_VALUE, "The minimum group size for Dragonflies.");
             dragonflyMax = config.getInt("Max. Group Size", DRAGONFLY_SETTINGS, 2, 0, Integer.MAX_VALUE, "The maximum group size for Dragonflies.");
+            
+            pixieEnable = config.getBoolean("Enable Pixies", PIXIE_SETTINGS, true, "Enables Pixies.  Disabling this will remove existing Pixies from your world.");
+            pixieWeight = config.getInt("Spawn Weight", PIXIE_SETTINGS, 1, 0, Integer.MAX_VALUE, "The spawn weight for Pixies.");
+            pixieMin = config.getInt("Min. Group Size", PIXIE_SETTINGS, 1, 0, Integer.MAX_VALUE, "The minimum group size for Pixies.");
+            pixieMax = config.getInt("Max. Group Size", PIXIE_SETTINGS, 1, 0, Integer.MAX_VALUE, "The maximum group size for Pixies.");
             
             snailEnable = config.getBoolean("Enable Snails", SNAIL_SETTINGS, true, "Enables Snails.  Disabling this will remove existing Snails from your world.");
             snailWeight = config.getInt("Spawn Weight", SNAIL_SETTINGS, 1, 0, Integer.MAX_VALUE, "The spawn weight for Snails.");

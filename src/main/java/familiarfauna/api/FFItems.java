@@ -11,6 +11,7 @@ public class FFItems
 	public static Item bug_net;
 	public static Item bug_habitat;
 	
+	public static Item pixie_dust;
 	public static Item snail_shell;
 	
 	public static Item turkey_leg_raw;

@@ -4,11 +4,18 @@
         "layer0": "familiarfauna:items/bug_habitat_empty"
     },
     "overrides": [
-        { "predicate": { "variant": 0 }, "model": "familiarfauna:item/bug_habitat_empty" },
-        { "predicate": { "variant": 1 }, "model": "familiarfauna:item/bug_habitat_orange_butterfly" },
-		{ "predicate": { "variant": 2 }, "model": "familiarfauna:item/bug_habitat_blue_butterfly" },
-		{ "predicate": { "variant": 3 }, "model": "familiarfauna:item/bug_habitat_purple_butterfly" },
-		{ "predicate": { "variant": 4 }, "model": "familiarfauna:item/bug_habitat_white_butterfly" },
-		{ "predicate": { "variant": 5 }, "model": "familiarfauna:item/bug_habitat_yellow_butterfly" }
+        { "predicate": { "bug": 0, "variant": 0 }, "model": "familiarfauna:item/bug_habitat_empty" },
+        { "predicate": { "bug": 1, "variant": 1 }, "model": "familiarfauna:item/bug_habitat_orange_butterfly" },
+		{ "predicate": { "bug": 1, "variant": 2 }, "model": "familiarfauna:item/bug_habitat_blue_butterfly" },
+		{ "predicate": { "bug": 1, "variant": 3 }, "model": "familiarfauna:item/bug_habitat_purple_butterfly" },
+		{ "predicate": { "bug": 1, "variant": 4 }, "model": "familiarfauna:item/bug_habitat_white_butterfly" },
+		{ "predicate": { "bug": 1, "variant": 5 }, "model": "familiarfauna:item/bug_habitat_yellow_butterfly" },
+		{ "predicate": { "bug": 2, "variant": 1 }, "model": "familiarfauna:item/bug_habitat_blue_dragonfly" },
+		{ "predicate": { "bug": 2, "variant": 2 }, "model": "familiarfauna:item/bug_habitat_red_dragonfly" },
+		{ "predicate": { "bug": 2, "variant": 3 }, "model": "familiarfauna:item/bug_habitat_green_dragonfly" },
+		{ "predicate": { "bug": 2, "variant": 4 }, "model": "familiarfauna:item/bug_habitat_banded_dragonfly" },
+		{ "predicate": { "bug": 3, "variant": 1 }, "model": "familiarfauna:item/bug_habitat_pink_pixie" },
+		{ "predicate": { "bug": 3, "variant": 2 }, "model": "familiarfauna:item/bug_habitat_blue_pixie" },
+		{ "predicate": { "bug": 3, "variant": 3 }, "model": "familiarfauna:item/bug_habitat_purple_pixie" }
     ]
 }

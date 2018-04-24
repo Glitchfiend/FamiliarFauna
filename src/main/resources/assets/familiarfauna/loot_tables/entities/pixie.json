@@ -1,0 +1,24 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+			"name": "pixie_dust",
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "familiarfauna:pixie_dust",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

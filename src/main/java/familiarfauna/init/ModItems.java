@@ -1,13 +1,6 @@
 package familiarfauna.init;
 
-import static familiarfauna.api.FFItems.bug_habitat;
-import static familiarfauna.api.FFItems.bug_net;
-import static familiarfauna.api.FFItems.ff_icon;
-import static familiarfauna.api.FFItems.snail_shell;
-import static familiarfauna.api.FFItems.turkey_leg_cooked;
-import static familiarfauna.api.FFItems.turkey_leg_raw;
-import static familiarfauna.api.FFItems.venison_cooked;
-import static familiarfauna.api.FFItems.venison_raw;
+import static familiarfauna.api.FFItems.*;
 
 import familiarfauna.core.FamiliarFauna;
 import familiarfauna.item.ItemBugHabitat;
@@ -45,7 +38,8 @@ public class ModItems
         bug_net = registerItem(new ItemBugNet(), "bug_net");
         bug_habitat = registerItem(new ItemBugHabitat(), "bug_habitat");
         
-        //Snail Shell
+        //Misc Mob Drops
+        pixie_dust = registerItem(new Item(), "pixie_dust");
         snail_shell = registerItem(new Item(), "snail_shell");
         
         //Turkey

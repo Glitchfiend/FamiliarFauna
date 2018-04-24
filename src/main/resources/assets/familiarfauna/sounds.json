@@ -13,5 +13,15 @@
     "sounds": [
       "familiarfauna:entity/dragonfly/ambient"
     ]
+  },
+    "entity.biomesoplenty.pixie.hurt": {
+    "sounds": [
+      "familiarfauna:entity/pixie/hurt"
+    ]
+  },
+  "entity.biomesoplenty.pixie.ambient": {
+    "sounds": [
+      "familiarfauna:entity/pixie/ambient"
+    ]
   }
 }

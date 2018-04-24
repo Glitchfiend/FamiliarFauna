@@ -190,6 +190,16 @@ public class EntityButterfly extends EntityAmbientCreature implements EntityFlyi
         this.dataManager.set(TYPE, Byte.valueOf((byte)butterflyTypeId));
     }
     
+    public static class ButterflyTypeData implements IEntityLivingData
+    {
+        public int typeData;
+
+        public ButterflyTypeData(int type)
+        {
+            this.typeData = type;
+        }
+    }
+    
     @Override
     public boolean canBePushed()
     {
@@ -226,6 +236,47 @@ public class EntityButterfly extends EntityAmbientCreature implements EntityFlyi
     public boolean doesEntityNotTriggerPressurePlate()
     {
         return true;
+    }
+    
+    @Override
+    public boolean isOnLadder()
+    {
+        return false;
+    }
+    
+    @Override
+    public boolean getCanSpawnHere()
+    {
+    	BlockPos blockpos = new BlockPos(this.posX, this.getEntityBoundingBox().minY, this.posZ);
+
+        if (blockpos.getY() <= this.world.getSeaLevel())
+        {
+            return false;
+        }
+        else
+        {
+        	if (blockpos.getY() >= 90)
+	        {
+	            return false;
+	        }
+        	else
+        	{
+	        	int light = this.world.getLightFromNeighbors(blockpos);
+	        	
+	        	return light > 8 && super.getCanSpawnHere();
+        	}
+        }
+    }
+    
+    @Override
+    public void onUpdate()
+    {
+        super.onUpdate();
+
+        if (!this.world.isRemote && (!(ConfigurationHandler.butterflyEnable)))
+        {
+            this.setDead();
+        }
     }
     
     @Override
@@ -287,47 +338,6 @@ public class EntityButterfly extends EntityAmbientCreature implements EntityFlyi
 
         this.limbSwingAmount += (f2 - this.limbSwingAmount) * 0.4F;
         this.limbSwing += this.limbSwingAmount;
-    }
-
-    @Override
-    public boolean isOnLadder()
-    {
-        return false;
-    }
-    
-    @Override
-    public void onUpdate()
-    {
-        super.onUpdate();
-
-        if (!this.world.isRemote && (!(ConfigurationHandler.butterflyEnable)))
-        {
-            this.setDead();
-        }
-    }
-    
-    @Override
-    public boolean getCanSpawnHere()
-    {
-    	BlockPos blockpos = new BlockPos(this.posX, this.getEntityBoundingBox().minY, this.posZ);
-
-        if (blockpos.getY() <= this.world.getSeaLevel())
-        {
-            return false;
-        }
-        else
-        {
-        	if (blockpos.getY() >= 90)
-	        {
-	            return false;
-	        }
-        	else
-        	{
-	        	int light = this.world.getLightFromNeighbors(blockpos);
-	        	
-	        	return light > 8 && super.getCanSpawnHere();
-        	}
-        }
     }
     
     // Helper class representing a point in space that the butterfly is targeting for some reason
@@ -558,15 +568,4 @@ public class EntityButterfly extends EntityAmbientCreature implements EntityFlyi
             return result;
         }
     }
-    
-    public static class ButterflyTypeData implements IEntityLivingData
-    {
-        public int typeData;
-
-        public ButterflyTypeData(int type)
-        {
-            this.typeData = type;
-        }
-    }
-    
 }

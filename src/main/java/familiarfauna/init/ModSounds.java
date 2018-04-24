@@ -1,9 +1,6 @@
 package familiarfauna.init;
 
-import static familiarfauna.api.FFSounds.deer_dead;
-import static familiarfauna.api.FFSounds.deer_hurt;
-import static familiarfauna.api.FFSounds.deer_step;
-import static familiarfauna.api.FFSounds.dragonfly_ambient;
+import static familiarfauna.api.FFSounds.*;
 
 import familiarfauna.core.FamiliarFauna;
 import net.minecraft.init.SoundEvents;
@@ -19,6 +16,8 @@ public class ModSounds
         deer_dead = registerSound("entity.familiarfauna.deer.dead");
         deer_step = SoundEvents.ENTITY_SHEEP_STEP;
         dragonfly_ambient = registerSound("entity.familiarfauna.dragonfly.ambient");
+        pixie_ambient = registerSound("entity.familiarfauna.pixie.ambient");
+        pixie_hurt = registerSound("entity.familiarfauna.pixie.hurt");
     }
     
     private static SoundEvent registerSound(String soundName)
