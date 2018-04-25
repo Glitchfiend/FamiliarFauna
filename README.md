@@ -1,4 +1,4 @@
-<p align="center"><img src="http://i.imgur.com/9oyHTKo.png"></p>
+<p align="center"><img src="https://i.imgur.com/C8QrIja.png"></p>
 
 **Familiar Fauna** is a **Minecraft mod** that adds **new creatures** to enhance **atmosphere and exploration**!
 
