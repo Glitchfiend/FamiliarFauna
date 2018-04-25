@@ -14,12 +14,12 @@
       "familiarfauna:entity/dragonfly/ambient"
     ]
   },
-    "entity.biomesoplenty.pixie.hurt": {
+    "entity.familiarfauna.pixie.hurt": {
     "sounds": [
       "familiarfauna:entity/pixie/hurt"
     ]
   },
-    "entity.biomesoplenty.pixie.ambient": {
+    "entity.familiarfauna.pixie.ambient": {
     "sounds": [
       "familiarfauna:entity/pixie/ambient"
     ]
