@@ -6,12 +6,16 @@ config.category.mobSettings.tooltip=启用/禁用生物生成，繁衍速度等�
 entity.familiarfauna.butterfly.name=蝴蝶
 entity.familiarfauna.deer.name=鹿
 entity.familiarfauna.dragonfly.name=蜻蜓
+entity.familiarfauna.pixie.name=精灵
 entity.familiarfauna.snail.name=蜗牛
+entity.familiarfauna.turkey.name=火鸡
 
 item.bug_habitat.name=昆虫居所
 item.bug_habitat_butterfly.name=昆虫居所（蝴蝶）
 item.bug_habitat_dragonfly.name=昆虫居所（蜻蜓）
+item.bug_habitat_pixie.name=昆虫居所（精灵）
 item.bug_net.name=捕虫网
+item.pixie_dust.name=精灵之尘
 item.snail_shell.name=蜗牛壳
 item.turkey_leg_raw.name=生火鸡腿
 item.turkey_leg_cooked.name=熟火鸡腿
