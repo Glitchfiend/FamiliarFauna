@@ -8,28 +8,31 @@
 
 package familiarfauna.entities;
 
+import java.util.Set;
+
 import javax.annotation.Nullable;
+
+import com.google.common.collect.Sets;
 
 import familiarfauna.api.FFSounds;
 import familiarfauna.config.ConfigurationHandler;
 import familiarfauna.init.ModLootTable;
 import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAIFollowParent;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIMate;
 import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWanderAvoidWater;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.IAnimals;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.init.SoundEvents;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -44,6 +47,8 @@ import net.minecraft.world.World;
 
 public class EntityTurkey extends EntityAnimal implements IAnimals
 {
+	private static final Set<Item> TEMPTATION_ITEMS = Sets.newHashSet(Items.WHEAT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.BEETROOT_SEEDS);
+	private static final DataParameter<Byte> TYPE = EntityDataManager.<Byte>createKey(EntityTurkey.class, DataSerializers.BYTE);
     public float wingRotation;
     public float destPos;
     public float oFlapSpeed;
@@ -53,13 +58,14 @@ public class EntityTurkey extends EntityAnimal implements IAnimals
     public EntityTurkey(World worldIn)
     {
         super(worldIn);
-        this.setSize(0.8F, 1.1F);
+        this.setSize(0.9F, 1.4F);
     }
     
     @Override
     protected void entityInit()
     {
         super.entityInit();
+        this.dataManager.register(TYPE, Byte.valueOf((byte)0));
     }
     
     @Override
@@ -68,9 +74,10 @@ public class EntityTurkey extends EntityAnimal implements IAnimals
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 1.0D));
         this.tasks.addTask(2, new EntityAIMate(this, 1.0D));
+        this.tasks.addTask(3, new EntityAITempt(this, 1.0D, false, TEMPTATION_ITEMS));
         this.tasks.addTask(4, new EntityAIFollowParent(this, 1.1D));
         this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 1.0D));
-        this.tasks.addTask(8, new EntityAILookIdle(this));
+        this.tasks.addTask(6, new EntityAILookIdle(this));
     }
     
     @Override
@@ -133,11 +140,31 @@ public class EntityTurkey extends EntityAnimal implements IAnimals
     {
         this.playSound(FFSounds.turkey_step, 0.15F, 1.0F);
     }
+    
+    @Override
+    public void writeEntityToNBT(NBTTagCompound tagCompound)
+    {
+        super.writeEntityToNBT(tagCompound);
+        tagCompound.setInteger("TurkeyType", this.getTurkeyType());
+    }
+
+    @Override
+    public void readEntityFromNBT(NBTTagCompound tagCompund)
+    {
+        super.readEntityFromNBT(tagCompund);
+        this.setTurkeyType(tagCompund.getInteger("TurkeyType"));
+    }
 
     @Override
     public EntityTurkey createChild(EntityAgeable ageable)
     {
         return new EntityTurkey(this.world);
+    }
+    
+    @Override
+    public boolean isBreedingItem(ItemStack stack)
+    {
+        return TEMPTATION_ITEMS.contains(stack.getItem());
     }
     
     @Nullable
@@ -149,7 +176,22 @@ public class EntityTurkey extends EntityAnimal implements IAnimals
     
     protected boolean canMate()
     {
-        return this.isChild() && this.getHealth() >= this.getMaxHealth() && this.isInLove();
+        return !this.isChild() && this.getHealth() >= this.getMaxHealth() && this.isInLove();
+    }
+    
+    @Override
+    public boolean canMateWith(EntityAnimal otherAnimal)
+    {
+        if (otherAnimal instanceof EntityTurkey)
+        {
+            EntityTurkey turkey = ((EntityTurkey)otherAnimal);
+            if (this.getTurkeyType() != turkey.getTurkeyType())
+            {
+                return this.canMate() && turkey.canMate();
+            }
+        }
+        
+        return false;
     }
     
     @Override
@@ -160,6 +202,48 @@ public class EntityTurkey extends EntityAnimal implements IAnimals
         if (!this.world.isRemote && (!(ConfigurationHandler.turkeyEnable)))
         {
             this.setDead();
+        }
+    }
+    
+    @Override
+    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
+    {
+        livingdata = super.onInitialSpawn(difficulty, livingdata);
+        int i = this.rand.nextInt(2);
+        boolean flag = false;
+
+        if (livingdata instanceof EntityTurkey.TurkeyTypeData)
+        {
+            i = ((EntityTurkey.TurkeyTypeData)livingdata).typeData;
+            flag = true;
+        }
+        else
+        {
+            livingdata = new EntityTurkey.TurkeyTypeData(i);
+        }
+
+        this.setTurkeyType(i);
+
+        return livingdata;
+    }
+    
+    public int getTurkeyType()
+    {
+        return (int) this.dataManager.get(TYPE);
+    }
+    
+    public void setTurkeyType(int turkeyTypeId)
+    {
+        this.dataManager.set(TYPE, Byte.valueOf((byte)turkeyTypeId));
+    }
+    
+    public static class TurkeyTypeData implements IEntityLivingData
+    {
+        public int typeData;
+
+        public TurkeyTypeData(int type)
+        {
+            this.typeData = type;
         }
     }
 }

@@ -17,7 +17,7 @@ public class RenderTurkey extends RenderLiving<EntityTurkey>
 
     public RenderTurkey(RenderManager renderManager)
     {
-        super(renderManager, new ModelTurkey(), 0.5F);
+        super(renderManager, new ModelTurkey(), 0.6F);
     }
     
     @Override

@@ -8,7 +8,11 @@
 
 package familiarfauna.entities;
 
+import java.util.Set;
+
 import javax.annotation.Nullable;
+
+import com.google.common.collect.Sets;
 
 import familiarfauna.api.FFSounds;
 import familiarfauna.config.ConfigurationHandler;
@@ -24,10 +28,14 @@ import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIMate;
 import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWanderAvoidWater;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.IAnimals;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -41,6 +49,7 @@ import net.minecraft.world.World;
 
 public class EntityDeer extends EntityAnimal implements IAnimals
 {
+	private static final Set<Item> TEMPTATION_ITEMS = Sets.newHashSet(Items.APPLE);
     private static final DataParameter<Byte> TYPE = EntityDataManager.<Byte>createKey(EntityDeer.class, DataSerializers.BYTE);
     
     public EntityDeer(World worldIn)
@@ -62,10 +71,11 @@ public class EntityDeer extends EntityAnimal implements IAnimals
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));
         this.tasks.addTask(2, new EntityAIMate(this, 1.0D));
+        this.tasks.addTask(3, new EntityAITempt(this, 0.8D, true, TEMPTATION_ITEMS));
         this.tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
         this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 1.0D));
         this.tasks.addTask(6, new EntityDeer.AIAvoidEntity(this, EntityPlayer.class, 5.0F, 2.0D, 2.5D));
-        this.tasks.addTask(8, new EntityAILookIdle(this));
+        this.tasks.addTask(7, new EntityAILookIdle(this));
     }
     
     @Override
@@ -114,6 +124,12 @@ public class EntityDeer extends EntityAnimal implements IAnimals
         return new EntityDeer(this.world);
     }
     
+    @Override
+    public boolean isBreedingItem(ItemStack stack)
+    {
+        return TEMPTATION_ITEMS.contains(stack.getItem());
+    }
+    
     @Nullable
     @Override
     protected ResourceLocation getLootTable()
@@ -134,7 +150,7 @@ public class EntityDeer extends EntityAnimal implements IAnimals
     
     protected boolean canMate()
     {
-        return this.isChild() && this.getHealth() >= this.getMaxHealth() && this.isInLove();
+        return !this.isChild() && this.getHealth() >= this.getMaxHealth() && this.isInLove();
     }
     
     @Override

@@ -1,5 +1,6 @@
 package familiarfauna.entities.model;
 
+import familiarfauna.entities.EntityTurkey;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -17,65 +18,65 @@ public class ModelTurkey extends ModelBase
 	public ModelRenderer chest;
 	public ModelRenderer neck;
 	public ModelRenderer beak;
-	public ModelRenderer gizzard;
+	public ModelRenderer wattle;
 	public ModelRenderer plume;
 	public ModelRenderer leftWing;
 	public ModelRenderer rightWing;
 
     public ModelTurkey()
     {
-        this.textureWidth = 64;
-        this.textureHeight = 32;
+        textureWidth = 128;
+        textureHeight = 64;
         
-        body = new ModelRenderer(this, 20, 0);
-        body.addBox(-5F, 0F, -6F, 10, 7, 12);
-        body.setRotationPoint(0F, 12F, 0F);
-        setRotation(body, 0F, 0F, 0F);
-        
-        leftLeg = new ModelRenderer(this, 38, 19);
-        leftLeg.addBox(0F, 0F, -5F, 5, 5, 5);
-        leftLeg.setRotationPoint(0F, 19F, 2F);
-        setRotation(leftLeg, 0F, 0F, 0F);
-        
-        rightLeg = new ModelRenderer(this, 38, 19);
-        rightLeg.addBox(-5F, 0F, -5F, 5, 5, 5);
-        rightLeg.setRotationPoint(0F, 19F, 2F);
-        setRotation(rightLeg, 0F, 0F, 0F);
-        
-        chest = new ModelRenderer(this, 0, 24);
-        chest.addBox(-3F, -4F, -4F, 6, 4, 4);
-        chest.setRotationPoint(0F, 15F, -3F);
-        setRotation(chest, 0.7853982F, 0F, 0F);
-        
-        neck = new ModelRenderer(this, 0, 12);
-        neck.addBox(-2F, -8F, -5F, 4, 8, 3);
-        setRotation(neck, 0F, 0F, 0F);
-        this.chest.addChild(this.neck);
-        
-        beak = new ModelRenderer(this, 38, 29);
-        beak.addBox(-1F, -6F, -7F, 2, 1, 2);
-        setRotation(beak, 0F, 0F, 0F);
-        this.chest.addChild(this.beak);
-        
-        gizzard = new ModelRenderer(this, 58, 19);
-        gizzard.addBox(-1F, -5F, -6F, 2, 6, 1);
-        setRotation(gizzard, 0F, 0F, 0F);
-        this.chest.addChild(this.gizzard);
-        
-        plume = new ModelRenderer(this, 0, 0);
-        plume.addBox(-8F, -9F, 6F, 16, 12, 0);
-        plume.setRotationPoint(0F, 12F, 0F);
-        setRotation(plume, -0.2617994F, 0F, 0F);
-        
-        leftWing = new ModelRenderer(this, 20, 19);
-        leftWing.addBox(0F, 0F, 0F, 1, 5, 8);
-        leftWing.setRotationPoint(5F, 13F, -4F);
-        setRotation(leftWing, 0F, 0F, 0F);
-        
-        rightWing = new ModelRenderer(this, 20, 19);
-        rightWing.addBox(-1F, 0F, 0F, 1, 5, 8);
-        rightWing.setRotationPoint(-5F, 13F, -4F);
-        setRotation(rightWing, 0F, 0F, 0F);
+		body = new ModelRenderer(this, 0, 0);
+		body.addBox(-6F, 0F, -6F, 12, 8, 14);
+		body.setRotationPoint(0F, 10F, 0F);
+		setRotation(body, 0F, 0F, 0F);
+		
+		leftLeg = new ModelRenderer(this, 44, 22);
+		leftLeg.addBox(0F, 0F, -5F, 5, 6, 4);
+		leftLeg.setRotationPoint(0F, 18F, 4F);
+		setRotation(leftLeg, 0F, 0F, 0F);
+		
+		rightLeg = new ModelRenderer(this, 44, 22);
+		rightLeg.addBox(-5F, 0F, -5F, 5, 6, 4);
+		rightLeg.setRotationPoint(0F, 18F, 4F);
+		setRotation(rightLeg, 0F, 0F, 0F);
+		
+		chest = new ModelRenderer(this, 0, 22);
+		chest.addBox(-4F, -4F, -4F, 8, 5, 5);
+		chest.setRotationPoint(0F, 14F, -3F);
+		setRotation(chest, 0.7853982F, 0F, 0F);
+		
+		neck = new ModelRenderer(this, 0, 32);
+		neck.addBox(-2F, -10F, -5F, 4, 10, 3);
+		setRotation(neck, 0F, 0F, 0F);
+		this.chest.addChild(this.neck);
+		
+		beak = new ModelRenderer(this, 0, 45);
+		beak.addBox(-1F, -8F, -7F, 2, 1, 2);
+		setRotation(beak, 0F, 0F, 0F);
+		this.chest.addChild(this.beak);
+		
+		wattle = new ModelRenderer(this, 14, 32);
+		wattle.addBox(-1F, -7F, -6F, 2, 7, 1);
+		setRotation(wattle, 0F, 0F, 0F);
+		this.chest.addChild(this.wattle);
+		
+		plume = new ModelRenderer(this, 52, 0);
+		plume.addBox(-11F, -13F, 6F, 22, 14, 0);
+		plume.setRotationPoint(0F, 12F, 0F);
+		setRotation(plume, -0.2617994F, 0F, 0F);
+		
+		leftWing = new ModelRenderer(this, 26, 22);
+		leftWing.addBox(0F, 0F, 0F, 1, 6, 8);
+		leftWing.setRotationPoint(6F, 11F, -4F);
+		setRotation(leftWing, 0F, 0F, 0F);
+		
+		rightWing = new ModelRenderer(this, 26, 22);
+		rightWing.addBox(-1F, 0F, 0F, 1, 6, 8);
+		rightWing.setRotationPoint(-6F, 11F, -4F);
+		setRotation(rightWing, 0F, 0F, 0F);
     }
 
     @Override
@@ -103,7 +104,11 @@ public class ModelTurkey extends ModelBase
             leftLeg.render(scale);
             rightLeg.render(scale);
             chest.render(scale);
-            plume.render(scale);
+            
+            if (((EntityTurkey)entityIn).getTurkeyType() == 0)
+            {
+            	plume.render(scale);
+            }
             leftWing.render(scale);
             rightWing.render(scale);
         }
@@ -122,7 +127,7 @@ public class ModelTurkey extends ModelBase
         this.chest.rotateAngleX = headPitch * 0.017453292F + 0.7853982F;
         this.neck.rotateAngleX = headPitch * 0.017453292F - 0.7853982F;
         this.beak.rotateAngleX = headPitch * 0.017453292F - 0.7853982F;
-        this.gizzard.rotateAngleX = headPitch * 0.017453292F - 0.7853982F;
+        this.wattle.rotateAngleX = headPitch * 0.017453292F - 0.7853982F;
         this.chest.rotateAngleY = netHeadYaw * 0.017453292F;
         this.rightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
         this.leftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
