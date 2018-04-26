@@ -28,6 +28,7 @@ import net.minecraft.world.biome.Biome.SpawnListEntry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.EntityRegistry.EntityRegistration;
 
 public class ModEntities
@@ -37,75 +38,35 @@ public class ModEntities
 
     private static int nextFFEntityId = 1;
     
-    public static Biome[] BUTTERFLY_BIOMES = new Biome[] {Biomes.PLAINS, Biomes.MUTATED_PLAINS, Biomes.FOREST,
-            Biomes.FOREST_HILLS, Biomes.MUTATED_FOREST, Biomes.JUNGLE, Biomes.JUNGLE_EDGE, Biomes.JUNGLE_HILLS,
-            Biomes.MUTATED_JUNGLE, Biomes.MUTATED_JUNGLE_EDGE, ModCompat.cherry_blossom_grove, ModCompat.eucalyptus_forest,
-            ModCompat.flower_field, ModCompat.flower_island, ModCompat.grassland, ModCompat.grove,
-            ModCompat.lavender_fields, ModCompat.meadow, ModCompat.mystic_grove, ModCompat.orchard, ModCompat.rainforest,
-            ModCompat.sacred_springs, ModCompat.tropical_island};
-    
-    public static Biome[] DEER_BIOMES = new Biome[] {Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS,
-            Biomes.MUTATED_BIRCH_FOREST, Biomes.MUTATED_BIRCH_FOREST_HILLS, Biomes.FOREST, Biomes.FOREST_HILLS,
-            Biomes.MUTATED_FOREST, Biomes.TAIGA, Biomes.TAIGA_HILLS, Biomes.REDWOOD_TAIGA, Biomes.REDWOOD_TAIGA_HILLS,
-            Biomes.MUTATED_REDWOOD_TAIGA, Biomes.MUTATED_REDWOOD_TAIGA_HILLS, Biomes.MUTATED_TAIGA,
-            Biomes.EXTREME_HILLS, Biomes.EXTREME_HILLS_EDGE, Biomes.EXTREME_HILLS_WITH_TREES,
-            Biomes.MUTATED_EXTREME_HILLS, Biomes.MUTATED_EXTREME_HILLS_WITH_TREES, Biomes.ROOFED_FOREST,
-            Biomes.MUTATED_ROOFED_FOREST, Biomes.COLD_TAIGA, Biomes.COLD_TAIGA_HILLS, Biomes.MUTATED_TAIGA_COLD,
-            ModCompat.boreal_forest, ModCompat.coniferous_forest, ModCompat.dead_forest, ModCompat.maple_woods,
-            ModCompat.meadow, ModCompat.mountain_foothills, ModCompat.mystic_grove, ModCompat.redwood_forest,
-            ModCompat.seasonal_forest, ModCompat.shield, ModCompat.snowy_coniferous_forest, ModCompat.snowy_forest,
-            ModCompat.temperate_rainforest, ModCompat.woodland};
-    
-    public static Biome[] TURKEY_BIOMES = new Biome[] {Biomes.BIRCH_FOREST, Biomes.BIRCH_FOREST_HILLS,
-            Biomes.MUTATED_BIRCH_FOREST, Biomes.MUTATED_BIRCH_FOREST_HILLS, Biomes.FOREST, Biomes.FOREST_HILLS,
-            Biomes.MUTATED_FOREST, Biomes.TAIGA, Biomes.TAIGA_HILLS, Biomes.REDWOOD_TAIGA, Biomes.REDWOOD_TAIGA_HILLS,
-            Biomes.MUTATED_REDWOOD_TAIGA, Biomes.MUTATED_REDWOOD_TAIGA_HILLS, Biomes.MUTATED_TAIGA,
-            Biomes.EXTREME_HILLS, Biomes.EXTREME_HILLS_EDGE, Biomes.EXTREME_HILLS_WITH_TREES,
-            Biomes.MUTATED_EXTREME_HILLS, Biomes.MUTATED_EXTREME_HILLS_WITH_TREES, Biomes.ROOFED_FOREST,
-            Biomes.MUTATED_ROOFED_FOREST, Biomes.COLD_TAIGA, Biomes.COLD_TAIGA_HILLS, Biomes.MUTATED_TAIGA_COLD,
-            ModCompat.boreal_forest, ModCompat.coniferous_forest, ModCompat.dead_forest, ModCompat.grove, ModCompat.maple_woods,
-            ModCompat.mountain_foothills, ModCompat.mystic_grove, ModCompat.redwood_forest, ModCompat.seasonal_forest, ModCompat.shield,
-            ModCompat.snowy_coniferous_forest, ModCompat.snowy_forest, ModCompat.temperate_rainforest, ModCompat.woodland};
-    
-    public static Biome[] DRAGONFLY_BIOMES = new Biome[] {Biomes.SWAMPLAND, Biomes.MUTATED_SWAMPLAND,
-            ModCompat.bayou, ModCompat.bog, ModCompat.dead_swamp, ModCompat.fen, ModCompat.land_of_lakes,
-            ModCompat.lush_swamp, ModCompat.marsh, ModCompat.shield, ModCompat.temperate_rainforest, ModCompat.wetland};
-    
-    public static Biome[] PIXIE_BIOMES = new Biome[] {Biomes.MUTATED_FOREST, ModCompat.mystic_grove};    
-    
-    public static Biome[] SNAIL_BIOMES = new Biome[] {Biomes.SWAMPLAND, Biomes.MUTATED_SWAMPLAND,
-            ModCompat.bayou, ModCompat.bog, ModCompat.dead_swamp, ModCompat.fen, ModCompat.lush_swamp, ModCompat.marsh,
-            ModCompat.moor, ModCompat.quagmire, ModCompat.wetland};
-    
     public static void init()
     {
         //Butterfly
-    	registerFFEntityWithSpawnEgg(EntityButterfly.class, "familiarfauna.butterfly", 80, 3, true, 0x282828, 0xEF6F1F, EnumCreatureType.AMBIENT, ConfigurationHandler.butterflyWeight, ConfigurationHandler.butterflyMin, ConfigurationHandler.butterflyMax, BUTTERFLY_BIOMES);
+    	registerFFEntityWithSpawnEgg(EntityButterfly.class, "familiarfauna.butterfly", 80, 3, true, 0x282828, 0xEF6F1F, EnumCreatureType.AMBIENT, ConfigurationHandler.butterflyWeight, ConfigurationHandler.butterflyMin, ConfigurationHandler.butterflyMax, ModConfiguration.butterflyBiomeList);
     	
         //Deer
         //Remove cows from the biomes deer spawn in
     	if (ConfigurationHandler.deerReplaceCows)
 		{
-			removeSpawn(EntityCow.class, EnumCreatureType.CREATURE, DEER_BIOMES);
+			removeSpawn(EntityCow.class, EnumCreatureType.CREATURE, ModConfiguration.deerBiomeList);
 		}
-        registerFFEntityWithSpawnEgg(EntityDeer.class, "familiarfauna.deer", 80, 3, true, 0x765134, 0xF7EFE6, EnumCreatureType.CREATURE, ConfigurationHandler.deerWeight, ConfigurationHandler.deerMin, ConfigurationHandler.deerMax, DEER_BIOMES);
+        registerFFEntityWithSpawnEgg(EntityDeer.class, "familiarfauna.deer", 80, 3, true, 0x765134, 0xF7EFE6, EnumCreatureType.CREATURE, ConfigurationHandler.deerWeight, ConfigurationHandler.deerMin, ConfigurationHandler.deerMax, ModConfiguration.deerBiomeList);
     	
         //Dragonfly
-    	registerFFEntityWithSpawnEgg(EntityDragonfly.class, "familiarfauna.dragonfly", 80, 3, true, 0x34406D, 0x51A1CC, EnumCreatureType.AMBIENT, ConfigurationHandler.dragonflyWeight, ConfigurationHandler.dragonflyMin, ConfigurationHandler.dragonflyMax, DRAGONFLY_BIOMES);
+    	registerFFEntityWithSpawnEgg(EntityDragonfly.class, "familiarfauna.dragonfly", 80, 3, true, 0x34406D, 0x51A1CC, EnumCreatureType.AMBIENT, ConfigurationHandler.dragonflyWeight, ConfigurationHandler.dragonflyMin, ConfigurationHandler.dragonflyMax, ModConfiguration.dragonflyBiomeList);
     	
     	//Pixie
-    	registerFFEntityWithSpawnEgg(EntityPixie.class, "familiarfauna.pixie", 80, 3, true, 0xFF99E9, 0xFFFFFF, EnumCreatureType.AMBIENT, ConfigurationHandler.pixieWeight, ConfigurationHandler.pixieMin, ConfigurationHandler.pixieMax, PIXIE_BIOMES);
+    	registerFFEntityWithSpawnEgg(EntityPixie.class, "familiarfauna.pixie", 80, 3, true, 0xFF99E9, 0xFFFFFF, EnumCreatureType.AMBIENT, ConfigurationHandler.pixieWeight, ConfigurationHandler.pixieMin, ConfigurationHandler.pixieMax, ModConfiguration.pixieBiomeList);
     	
     	//Snail
-    	registerFFEntityWithSpawnEgg(EntitySnail.class, "familiarfauna.snail", 80, 3, true, 0xA694BC, 0xCDA26E, EnumCreatureType.AMBIENT, ConfigurationHandler.snailWeight, ConfigurationHandler.snailMin, ConfigurationHandler.snailMax, SNAIL_BIOMES);
+    	registerFFEntityWithSpawnEgg(EntitySnail.class, "familiarfauna.snail", 80, 3, true, 0xA694BC, 0xCDA26E, EnumCreatureType.AMBIENT, ConfigurationHandler.snailWeight, ConfigurationHandler.snailMin, ConfigurationHandler.snailMax, ModConfiguration.snailBiomeList);
     	
     	//Turkey
         //Remove chickens from the biomes turkey spawn in
     	if (ConfigurationHandler.turkeyReplaceChickens)
 		{
-			removeSpawn(EntityChicken.class, EnumCreatureType.CREATURE, TURKEY_BIOMES);
+			removeSpawn(EntityChicken.class, EnumCreatureType.CREATURE, ModConfiguration.turkeyBiomeList);
 		}
-        registerFFEntityWithSpawnEgg(EntityTurkey.class, "familiarfauna.turkey", 80, 3, true, 0x6B492E, 0xE23131, EnumCreatureType.CREATURE, ConfigurationHandler.turkeyWeight, ConfigurationHandler.turkeyMin, ConfigurationHandler.turkeyMax, TURKEY_BIOMES);
+        registerFFEntityWithSpawnEgg(EntityTurkey.class, "familiarfauna.turkey", 80, 3, true, 0x6B492E, 0xE23131, EnumCreatureType.CREATURE, ConfigurationHandler.turkeyWeight, ConfigurationHandler.turkeyMin, ConfigurationHandler.turkeyMax, ModConfiguration.turkeyBiomeList);
     }
     
     // register an entity
@@ -119,7 +80,7 @@ public class ModEntities
     }
     
     // register an entity and in addition create a spawn egg for it
-    public static int registerFFEntityWithSpawnEgg(Class<? extends EntityLiving> entityClass, String entityName, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates, int eggBackgroundColor, int eggForegroundColor, EnumCreatureType enumCreatureType, int spawnWeight, int spawnMin, int spawnMax, Biome... biomes)
+    public static int registerFFEntityWithSpawnEgg(Class<? extends EntityLiving> entityClass, String entityName, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates, int eggBackgroundColor, int eggForegroundColor, EnumCreatureType enumCreatureType, int spawnWeight, int spawnMin, int spawnMax, List<String> biomes)
     {
         int ffEntityId = registerFFEntity(entityClass, entityName, trackingRange, updateFrequency, sendsVelocityUpdates);
         EntityRegistry.registerEgg(new ResourceLocation(FamiliarFauna.MOD_ID, entityName), eggBackgroundColor, eggForegroundColor);
@@ -154,12 +115,16 @@ public class ModEntities
         return entity;
     }
     
-    public static void addSpawn(Class <? extends EntityLiving > entityClass, int weightedProb, int min, int max, EnumCreatureType typeOfCreature, Biome... biomes)
+    public static void addSpawn(Class <? extends EntityLiving > entityClass, int weightedProb, int min, int max, EnumCreatureType typeOfCreature, List<String> biomes)
     {
-        for (Biome biome : biomes)
+    	for (String biomeName : biomes)
         {
-            if (biome != null)
+            ResourceLocation loc = new ResourceLocation(biomeName);
+
+            if (ForgeRegistries.BIOMES.containsKey(loc))
             {
+            	Biome biome = ForgeRegistries.BIOMES.getValue(loc);
+            	
                 List<SpawnListEntry> spawns = biome.getSpawnableList(typeOfCreature);
     
                 boolean found = false;
@@ -182,12 +147,16 @@ public class ModEntities
         }
     }
     
-    public static void removeSpawn(Class <? extends EntityLiving > entityClass, EnumCreatureType typeOfCreature, Biome... biomes)
+    public static void removeSpawn(Class <? extends EntityLiving > entityClass, EnumCreatureType typeOfCreature, List<String> biomes)
     {
-        for (Biome biome : biomes)
+    	for (String biomeName : biomes)
         {
-            if (biome != null)
+            ResourceLocation loc = new ResourceLocation(biomeName);
+
+            if (ForgeRegistries.BIOMES.containsKey(loc))
             {
+            	Biome biome = ForgeRegistries.BIOMES.getValue(loc);
+            	
                 Iterator<SpawnListEntry> spawns = biome.getSpawnableList(typeOfCreature).iterator();
     
                 while (spawns.hasNext())
