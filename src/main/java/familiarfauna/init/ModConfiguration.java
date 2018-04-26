@@ -81,7 +81,9 @@ public class ModConfiguration
         List<String> snailBiomes = Lists.newArrayList("minecraft:swampland", "minecraft:mutated_swampland",
         		
         	"biomesoplenty:bayou", "biomesoplenty:bog", "biomesoplenty:dead_swamp", "biomesoplenty:fen", "biomesoplenty:lush_swamp",
-        	"biomesoplenty:marsh", "biomesoplenty:moor", "biomesoplenty:quagmire", "biomesoplenty:wetland");
+        	"biomesoplenty:marsh", "biomesoplenty:moor", "biomesoplenty:quagmire", "biomesoplenty:wetland",
+        	
+        	"traverse:green_swamp");
         
         snailBiomeList = JsonUtil.getOrCreateConfigFile(configDirectory, "snail_biomes.json", snailBiomes, new TypeToken<List<String>>(){}.getType());
 
