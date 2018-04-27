@@ -35,8 +35,8 @@ public class ModConfiguration
         	"biomesoplenty:orchard", "biomesoplenty:rainforest", "biomesoplenty:sacred_springs", "biomesoplenty:tropical_island",
         	
         	"traverse:lush_hills", "traverse:meadow", "traverse:mini_jungle", "traverse:rocky_plains",
-        	
-        	"conquest:deciduous_forest", "conquest:japanese_forest", "conquest:forest_flower_plain", "conquest:mediterranean");
+        	"conquest:deciduous_forest", "conquest:japanese_forest", "conquest:forest_flower_plain", "conquest:mediterranean",
+        	"twilightforest:twilight_forest", "twilightforest:twilight_clearing", "twilightforest:firefly_forest", "twilightforest:enchanted_forest");
         
         butterflyBiomeList = JsonUtil.getOrCreateConfigFile(configDirectory, "butterfly_biomes.json", butterflyBiomes, new TypeToken<List<String>>(){}.getType());
 
@@ -56,7 +56,6 @@ public class ModConfiguration
         	
         	"traverse:autumnal_woods", "traverse:autumnal_wooded_hills", "traverse:birch_forested_hills", "traverse:foreseted_hills",
         	"traverse:snowy_coniferous_forest", "traverse:temperate_rainforest", "traverse:woodlands",
-        	
         	"conquest:boreal_forest", "conquest:birch_forest", "conquest:deciduous_forest", "conquest:japanese_forest", "conquest:oldgrowth_forest",
         	"conquest:lorein_forest", "conquest:mountains", "conquest:mega_boreal_forest");
         
@@ -70,13 +69,14 @@ public class ModConfiguration
         	"biomesoplenty:lush_swamp", "biomesoplenty:marsh", "biomesoplenty:moor", "biomesoplenty:shield", "biomesoplenty:temperate_rainforest",
         	"biomesoplenty:tundra", "biomesoplenty:wetland",
         	
-        	"traverse:green_swamp", "conquest:alder_swamp", "conquest:bog", "conquest:marsh", "conquest:moorland", "conquest:tundra_marsh");
+        	"traverse:green_swamp", "conquest:alder_swamp", "conquest:bog", "conquest:marsh", "conquest:moorland", "conquest:tundra_marsh",
+        	"twilightforest:twilight_swamp", "twilightforest:fire_swamp", "twilightforest:twilight_stream");
         
         dragonflyBiomeList = JsonUtil.getOrCreateConfigFile(configDirectory, "dragonfly_biomes.json", dragonflyBiomes, new TypeToken<List<String>>(){}.getType());
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         //Pixie Biomes
-        List<String> pixieBiomes = Lists.newArrayList("minecraft:mutated_forest", "biomesoplenty:mystic_grove");
+        List<String> pixieBiomes = Lists.newArrayList("minecraft:mutated_forest", "biomesoplenty:mystic_grove", "twilightforest:enchanted_forest");
         
         pixieBiomeList = JsonUtil.getOrCreateConfigFile(configDirectory, "pixie_biomes.json", pixieBiomes, new TypeToken<List<String>>(){}.getType());
 
@@ -87,7 +87,7 @@ public class ModConfiguration
         	"biomesoplenty:bayou", "biomesoplenty:bog", "biomesoplenty:dead_swamp", "biomesoplenty:fen", "biomesoplenty:lush_swamp",
         	"biomesoplenty:marsh", "biomesoplenty:quagmire", "biomesoplenty:wetland",
         	
-        	"traverse:green_swamp", "conquest:alder_swamp", "conquest:bog", "conquest:marsh");
+        	"traverse:green_swamp", "conquest:alder_swamp", "conquest:bog", "conquest:marsh", "twilightforest:twilight_swamp");
         
         snailBiomeList = JsonUtil.getOrCreateConfigFile(configDirectory, "snail_biomes.json", snailBiomes, new TypeToken<List<String>>(){}.getType());
 
@@ -106,9 +106,9 @@ public class ModConfiguration
         	
         	"traverse:autumnal_woods", "traverse:autumnal_wooded_hills", "traverse:birch_forested_hills", "traverse:foreseted_hills",
         	"traverse:snowy_coniferous_forest", "traverse:temperate_rainforest", "traverse:woodlands",
-        	
         	"conquest:boreal_forest", "conquest:birch_forest", "conquest:deciduous_forest", "conquest:oldgrowth_forest", "conquest:lorein_forest",
-        	"conquest:mountains", "conquest:mega_boreal_forest");
+        	"conquest:mountains", "conquest:mega_boreal_forest",
+        	"twilightforest:dense_twilight_forest", "twilightforest:snowy_forest", "twilightforest:twilight_highlands");
         
         turkeyBiomeList = JsonUtil.getOrCreateConfigFile(configDirectory, "turkey_biomes.json", turkeyBiomes, new TypeToken<List<String>>(){}.getType());
 
