@@ -1,0 +1,23 @@
+itemGroup.tabFamiliarFauna=Familiar Fauna
+
+config.category.mobSettings.title=Kreatureinstellungen
+config.category.mobSettings.tooltip=Kreaturen einschalten/ausschalten, Spawnraten anpassen, etc.
+
+entity.familiarfauna.butterfly.name=Schmetterling
+entity.familiarfauna.deer.name=Hirsch
+entity.familiarfauna.dragonfly.name=Libelle
+entity.familiarfauna.pixie.name=Fee
+entity.familiarfauna.snail.name=Schnecke
+entity.familiarfauna.turkey.name=Truthahn
+
+item.bug_habitat.name=Insektenwohnung
+item.bug_habitat_butterfly.name=Insektenwohnung - Schmetterling
+item.bug_habitat_dragonfly.name=Insektenwohnung - Libelle
+item.bug_habitat_pixie.name=Insektenwohnung - Fee
+item.bug_net.name=Insektenkescher
+item.pixie_dust.name=Feenstaub
+item.snail_shell.name=Schneckenhaus
+item.turkey_leg_raw.name=Rohes Truthahnbein
+item.turkey_leg_cooked.name=Gebratenes Truthahnbein
+item.venison_raw.name=Rohes Wildbret
+item.venison_cooked.name=Gebratenes Wildbret
