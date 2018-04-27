@@ -1,0 +1,23 @@
+itemGroup.tabFamiliarFauna=Familiar Fauna
+
+config.category.mobSettings.title=Mob設定
+config.category.mobSettings.tooltip=Mobの有効/無効、スポーン率などを設定します。
+
+entity.familiarfauna.butterfly.name=蝶
+entity.familiarfauna.deer.name=鹿
+entity.familiarfauna.dragonfly.name=トンボ
+entity.familiarfauna.pixie.name=ピクシー
+entity.familiarfauna.snail.name=カタツムリ
+entity.familiarfauna.turkey.name=七面鳥
+
+item.bug_habitat.name=虫かご
+item.bug_habitat_butterfly.name=虫かご - 蝶
+item.bug_habitat_dragonfly.name=虫かご - トンボ
+item.bug_habitat_pixie.name=虫かご - ピクシー
+item.bug_net.name=虫取り網
+item.pixie_dust.name=ピクシーの粉
+item.snail_shell.name=カタツムリの殻
+item.turkey_leg_raw.name=生の七面鳥の足
+item.turkey_leg_cooked.name=焼いた七面鳥の足
+item.venison_raw.name=生の鹿肉
+item.venison_cooked.name=焼いた鹿肉
