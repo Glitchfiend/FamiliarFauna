@@ -35,7 +35,7 @@ public class ModConfiguration
         	"biomesoplenty:orchard", "biomesoplenty:rainforest", "biomesoplenty:sacred_springs", "biomesoplenty:tropical_island",
         	
         	"traverse:lush_hills", "traverse:meadow", "traverse:mini_jungle", "traverse:rocky_plains",
-        	"conquest:deciduous_forest", "conquest:japanese_forest", "conquest:forest_flower_plain", "conquest:mediterranean",
+        	"conquest:deciduous_forest", "conquest:japanese_forest", "conquest:forest_flower_plain", "conquest:mediterranean", "conquest:jungle_mod",
         	"twilightforest:twilight_forest", "twilightforest:twilight_clearing", "twilightforest:firefly_forest", "twilightforest:enchanted_forest");
         
         butterflyBiomeList = JsonUtil.getOrCreateConfigFile(configDirectory, "butterfly_biomes.json", butterflyBiomes, new TypeToken<List<String>>(){}.getType());
@@ -67,9 +67,9 @@ public class ModConfiguration
         		
         	"biomesoplenty:bayou", "biomesoplenty:bog", "biomesoplenty:dead_swamp", "biomesoplenty:fen", "biomesoplenty:land_of_lakes",
         	"biomesoplenty:lush_swamp", "biomesoplenty:marsh", "biomesoplenty:moor", "biomesoplenty:shield", "biomesoplenty:temperate_rainforest",
-        	"biomesoplenty:tundra", "biomesoplenty:wetland",
+        	"biomesoplenty:wetland",
         	
-        	"traverse:green_swamp", "conquest:alder_swamp", "conquest:bog", "conquest:marsh", "conquest:moorland", "conquest:tundra_marsh",
+        	"traverse:green_swamp", "conquest:alder_swamp", "conquest:bog", "conquest:marsh", "conquest:moorland",
         	"twilightforest:twilight_swamp", "twilightforest:fire_swamp", "twilightforest:twilight_stream");
         
         dragonflyBiomeList = JsonUtil.getOrCreateConfigFile(configDirectory, "dragonfly_biomes.json", dragonflyBiomes, new TypeToken<List<String>>(){}.getType());
