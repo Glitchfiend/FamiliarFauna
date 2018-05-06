@@ -55,7 +55,7 @@ public class EntityDragonfly extends EntityAmbientCreature implements EntityFlyi
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(0.5D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(1.0D);
     }
     
     @Override
