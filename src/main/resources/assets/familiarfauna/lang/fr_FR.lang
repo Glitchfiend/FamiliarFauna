@@ -1,0 +1,23 @@
+itemGroup.tabFamiliarFauna=Familiar Fauna
+
+config.category.mobSettings.title=Paramètres des créatures
+config.category.mobSettings.tooltip=Activer/désactiver des créatures, modifier les taux d'apparition, etc.
+
+entity.familiarfauna.butterfly.name=Papillon
+entity.familiarfauna.deer.name=Cerf
+entity.familiarfauna.dragonfly.name=Libellule
+entity.familiarfauna.pixie.name=Pixie
+entity.familiarfauna.snail.name=Escargot
+entity.familiarfauna.turkey.name=Dindon
+
+item.bug_habitat.name=Habitat d'insectes
+item.bug_habitat_butterfly.name=Habitat d'insectes - Papillon
+item.bug_habitat_dragonfly.name=Habitat d'insectes - Libellule
+item.bug_habitat_pixie.name=Habitat d'insectes - Pixie
+item.bug_net.name=Moustiquaire
+item.pixie_dust.name=Poussière de Pixie
+item.snail_shell.name=Coquille d'escargot
+item.turkey_leg_raw.name=Jambe de dinde crue
+item.turkey_leg_cooked.name=Jambe de dinde cuite
+item.venison_raw.name=Viande de cerf crue
+item.venison_cooked.name=Viande de cerf cuite
