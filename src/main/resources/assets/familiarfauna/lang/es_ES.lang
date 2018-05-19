@@ -1,0 +1,23 @@
+itemGroup.tabFamiliarFauna=Familiar Fauna
+
+config.category.mobSettings.title=Ajustes de mobs
+config.category.mobSettings.tooltip=Habilitar/deshabilitar mobs, tasa de generación, etc.
+
+entity.familiarfauna.butterfly.name=Mariposa
+entity.familiarfauna.deer.name=Ciervo
+entity.familiarfauna.dragonfly.name=Libélula
+entity.familiarfauna.pixie.name=Pixie
+entity.familiarfauna.snail.name=Caracol
+entity.familiarfauna.turkey.name=Pavo
+
+item.bug_habitat.name=Caja de insectos
+item.bug_habitat_butterfly.name=Caja de insectos (mariposas)
+item.bug_habitat_dragonfly.name=Caja de insectos (libélulas)
+item.bug_habitat_pixie.name=Caja de insectos (pixies)
+item.bug_net.name=Red para insectos
+item.pixie_dust.name=Polvo de pixie
+item.snail_shell.name=Caparazón de caracol
+item.turkey_leg_raw.name=Pata de pavo cruda
+item.turkey_leg_cooked.name=Pata de pavo cocinada
+item.venison_raw.name=Carne de ciervo cruda
+item.venison_cooked.name=Ciervo cocinado
