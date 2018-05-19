@@ -1,0 +1,23 @@
+itemGroup.tabFamiliarFauna=Familiar Fauna
+
+config.category.mobSettings.title=Настройки мобов
+config.category.mobSettings.tooltip=Включайте/выключайте мобов, изменяйте частоту спавна и т.д.
+
+entity.familiarfauna.butterfly.name=Бабочка
+entity.familiarfauna.deer.name=Олень
+entity.familiarfauna.dragonfly.name=Стрекоза
+entity.familiarfauna.pixie.name=Фея
+entity.familiarfauna.snail.name=Улитка
+entity.familiarfauna.turkey.name=Индюк
+
+item.bug_habitat.name=Контейнер для насекомых
+item.bug_habitat_butterfly.name=Контейнер с бабочкой
+item.bug_habitat_dragonfly.name=Контейнер со стрекозой
+item.bug_habitat_pixie.name=Контейнер с феей
+item.bug_net.name=Сачок
+item.pixie_dust.name=Пыльца феи
+item.snail_shell.name=Раковина улитки
+item.turkey_leg_raw.name=Сырая индюшатина
+item.turkey_leg_cooked.name=Жареная индюшатина
+item.venison_raw.name=Сырая оленина
+item.venison_cooked.name=Жареная оленина
