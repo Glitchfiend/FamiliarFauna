@@ -1,0 +1,23 @@
+itemGroup.tabFamiliarFauna=Familiar Fauna
+
+config.category.mobSettings.title=Configurações de criaturas
+config.category.mobSettings.tooltip=Ativar/desativar criaturas, alterar taxas de geração etc.
+
+entity.familiarfauna.butterfly.name=Borboleta
+entity.familiarfauna.deer.name=Cervo
+entity.familiarfauna.dragonfly.name=Libélula
+entity.familiarfauna.pixie.name=Fada
+entity.familiarfauna.snail.name=Caracol
+entity.familiarfauna.turkey.name=Peru
+
+item.bug_habitat.name=Pote de insetos
+item.bug_habitat_butterfly.name=Pote de insetos - Borboleta
+item.bug_habitat_dragonfly.name=Pote de insetos - Libélula
+item.bug_habitat_pixie.name=Pote de insetos - Fada
+item.bug_net.name=Rede de insetos
+item.pixie_dust.name=Pó de fada
+item.snail_shell.name=Concha de caracol
+item.turkey_leg_raw.name=Perna de peru crua
+item.turkey_leg_cooked.name=Perna assada de peru
+item.venison_raw.name=Carne de cervo cru
+item.venison_cooked.name=Carne de cervo assada
