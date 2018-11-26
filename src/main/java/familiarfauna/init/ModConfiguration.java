@@ -51,8 +51,8 @@ public class ModConfiguration
         	
         	"biomesoplenty:boreal_forest", "biomesoplenty:coniferous_forest", "biomesoplenty:dead_forest", "biomesoplenty:grove", "biomesoplenty:maple_woods",
         	"biomesoplenty:meadow", "biomesoplenty:mountain_foothills", "biomesoplenty:mystic_grove", "biomesoplenty:redwood_forest",
-        	"biomesoplenty:seasonal_forest", "biomesoplenty:shield", "biomesoplenty:snowy_coniferous_forest", "biomesoplenty:snowy_forest",
-        	"biomesoplenty:temperate_rainforest", "biomesoplenty:woodland",
+        	"biomesoplenty:redwood_forest_edge", "biomesoplenty:seasonal_forest", "biomesoplenty:shield", "biomesoplenty:snowy_coniferous_forest",
+        	"biomesoplenty:snowy_forest", "biomesoplenty:temperate_rainforest", "biomesoplenty:woodland",
         	
         	"traverse:autumnal_woods", "traverse:autumnal_wooded_hills", "traverse:birch_forested_hills", "traverse:foreseted_hills",
         	"traverse:snowy_coniferous_forest", "traverse:temperate_rainforest", "traverse:woodlands",
@@ -101,8 +101,9 @@ public class ModConfiguration
         	"minecraft:mutated_extreme_hills", "minecraft:mutated_extreme_hills_with_trees", "minecraft:roofed_forest", "minecraft:mutated_roofed_forest",
         	
         	"biomesoplenty:boreal_forest", "biomesoplenty:coniferous_forest", "biomesoplenty:dead_forest", "biomesoplenty:grove", "biomesoplenty:maple_woods",
-        	"biomesoplenty:mountain_foothills", "biomesoplenty:redwood_forest", "biomesoplenty:seasonal_forest", "biomesoplenty:shield",
-        	"biomesoplenty:snowy_coniferous_forest", "biomesoplenty:snowy_forest", "biomesoplenty:temperate_rainforest", "biomesoplenty:woodland",
+        	"biomesoplenty:mountain_foothills", "biomesoplenty:redwood_forest", "biomesoplenty:redwood_forest", "biomesoplenty:seasonal_forest",
+        	"biomesoplenty:shield", "biomesoplenty:snowy_coniferous_forest", "biomesoplenty:snowy_forest", "biomesoplenty:temperate_rainforest",
+        	"biomesoplenty:woodland",
         	
         	"traverse:autumnal_woods", "traverse:autumnal_wooded_hills", "traverse:birch_forested_hills", "traverse:foreseted_hills",
         	"traverse:snowy_coniferous_forest", "traverse:temperate_rainforest", "traverse:woodlands",
