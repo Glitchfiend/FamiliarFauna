@@ -187,19 +187,9 @@ public class EntityDragonfly extends EntityAmbientCreature implements EntityFlyi
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
     {
         livingdata = super.onInitialSpawn(difficulty, livingdata);
-        int i = this.rand.nextInt(4);
-        boolean flag = false;
+        int i = this.world.rand.nextInt(4);
 
-        if (livingdata instanceof EntityDragonfly.DragonflyTypeData)
-        {
-            i = ((EntityDragonfly.DragonflyTypeData)livingdata).typeData;
-            flag = true;
-        }
-        else
-        {
-            livingdata = new EntityDragonfly.DragonflyTypeData(i);
-        }
-
+        livingdata = new EntityDragonfly.DragonflyTypeData(i);
         this.setDragonflyType(i);
 
         return livingdata;

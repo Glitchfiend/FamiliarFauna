@@ -186,19 +186,9 @@ public class EntityPixie extends EntityAmbientCreature implements EntityFlying
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
     {
         livingdata = super.onInitialSpawn(difficulty, livingdata);
-        int i = this.rand.nextInt(3);
-        boolean flag = false;
+        int i = this.world.rand.nextInt(3);
 
-        if (livingdata instanceof EntityPixie.PixieTypeData)
-        {
-            i = ((EntityPixie.PixieTypeData)livingdata).typeData;
-            flag = true;
-        }
-        else
-        {
-            livingdata = new EntityPixie.PixieTypeData(i);
-        }
-
+        livingdata = new EntityPixie.PixieTypeData(i);
         this.setPixieType(i);
 
         return livingdata;

@@ -162,19 +162,9 @@ public class EntityButterfly extends EntityAmbientCreature implements EntityFlyi
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
     {
         livingdata = super.onInitialSpawn(difficulty, livingdata);
-        int i = this.rand.nextInt(5);
-        boolean flag = false;
+        int i = this.world.rand.nextInt(5);
 
-        if (livingdata instanceof EntityButterfly.ButterflyTypeData)
-        {
-            i = ((EntityButterfly.ButterflyTypeData)livingdata).typeData;
-            flag = true;
-        }
-        else
-        {
-            livingdata = new EntityButterfly.ButterflyTypeData(i);
-        }
-
+        livingdata = new EntityButterfly.ButterflyTypeData(i);
         this.setButterflyType(i);
 
         return livingdata;

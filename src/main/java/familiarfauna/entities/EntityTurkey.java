@@ -209,19 +209,9 @@ public class EntityTurkey extends EntityAnimal implements IAnimals
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
     {
         livingdata = super.onInitialSpawn(difficulty, livingdata);
-        int i = this.rand.nextInt(2);
-        boolean flag = false;
+        int i = this.world.rand.nextInt(2);
 
-        if (livingdata instanceof EntityTurkey.TurkeyTypeData)
-        {
-            i = ((EntityTurkey.TurkeyTypeData)livingdata).typeData;
-            flag = true;
-        }
-        else
-        {
-            livingdata = new EntityTurkey.TurkeyTypeData(i);
-        }
-
+        livingdata = new EntityTurkey.TurkeyTypeData(i);
         this.setTurkeyType(i);
 
         return livingdata;

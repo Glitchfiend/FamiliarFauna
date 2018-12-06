@@ -183,20 +183,10 @@ public class EntityDeer extends EntityAnimal implements IAnimals
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
     {
         livingdata = super.onInitialSpawn(difficulty, livingdata);
-        int i = this.rand.nextInt(2);
-        int ii = this.rand.nextInt(5);
-        boolean flag = false;
+        int i = this.world.rand.nextInt(2);
+        int ii = this.world.rand.nextInt(5);
 
-        if (livingdata instanceof EntityDeer.DeerTypeData)
-        {
-            i = ((EntityDeer.DeerTypeData)livingdata).typeData;
-            flag = true;
-        }
-        else
-        {
-            livingdata = new EntityDeer.DeerTypeData(i);
-        }
-
+        livingdata = new EntityDeer.DeerTypeData(i);
         this.setDeerType(i);
         
         if (ii == 0)
