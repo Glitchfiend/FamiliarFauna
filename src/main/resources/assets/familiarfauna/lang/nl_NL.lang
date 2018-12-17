@@ -1,0 +1,23 @@
+itemGroup.tabFamiliarFauna = Familiar Fauna
+
+config.category.mobSettings.title = Mob Instellingen
+config.category.mobSettings.tooltip = Mobs inschakelen / uitschakelen, spawn-rates wijzigen, etc.
+
+entity.familiarfauna.butterfly.name = Vlinder
+entity.familiarfauna.deer.name = Hert
+entity.familiarfauna.dragonfly.name = Libelle
+entity.familiarfauna.pixie.name = Elf
+entity.familiarfauna.snail.name = Slak
+entity.familiarfauna.turkey.name = Kalkoen
+
+item.bug_habitat.name = Bughabitat
+item.bug_habitat_butterfly.name = Insect Habitat - Vlinder
+item.bug_habitat_dragonfly.name = Insect Habitat - Libelle
+item.bug_habitat_pixie.name = Insect Habitat - Elf
+item.bug_net.name = Insecten-net
+item.pixie_dust.name = Elfen Stof
+item.snail_shell.name = Slakkenhuis
+item.turkey_leg_raw.name = Rauwe Kalkoen poot
+item.turkey_leg_cooked.name = Gekookt Kalkoen poot
+item.venison_raw.name = Rauw wild
+item.venison_cooked.name = Gekookt wild
