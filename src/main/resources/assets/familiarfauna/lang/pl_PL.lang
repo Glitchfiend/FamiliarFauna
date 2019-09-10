@@ -1,0 +1,23 @@
+itemGroup.tabFamiliarFauna=Familiar Fauna
+
+config.category.mobSettings.title=Ustawienia mobów
+config.category.mobSettings.tooltip=Włącz/wyłącz moby, zmień tempo odradzania, itd.
+
+entity.familiarfauna.butterfly.name=Motyl
+entity.familiarfauna.deer.name=Jeleń
+entity.familiarfauna.dragonfly.name=Ważka
+entity.familiarfauna.pixie.name=Świetlik
+entity.familiarfauna.snail.name=Ślimak
+entity.familiarfauna.turkey.name=Indyk
+
+item.bug_habitat.name=Siedlisko owadów
+item.bug_habitat_butterfly.name=Siedlisko owadów - Motyl
+item.bug_habitat_dragonfly.name=Siedlisko owadów - Ważka
+item.bug_habitat_pixie.name=Siedlisko owadów - Świetlik
+item.bug_net.name=Siatka na owady
+item.pixie_dust.name=Świetlikowy pył
+item.snail_shell.name=Muszla ślimaka
+item.turkey_leg_raw.name=Surowe udo indyka
+item.turkey_leg_cooked.name=Pieczone udo indyka
+item.venison_raw.name=Surowa dziczyzna
+item.venison_cooked.name=Pieczona dziczyzna
